@@ -7,13 +7,18 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HuntsmanSpider extends Actor {
+public class HuntsmanSpider extends Enemy {
+
+    /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
 
+    /**
+     * Constructor for HuntsmanSpider.
+     */
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
         this.behaviours.put(999, new WanderBehaviour());
@@ -34,8 +39,19 @@ public class HuntsmanSpider extends Actor {
             Action action = behaviour.getAction(this, map);
             if(action != null)
                 return action;
+
         }
         return new DoNothingAction();
+    }
+
+    /**
+     * Retrieves the intrinsic weapon of the Huntsman Spider.
+     *
+     * @return the IntrinsicWeapon of the Huntsman Spider
+     */
+    @Override
+    public IntrinsicWeapon getIntrinsicWeapon(){
+        return new IntrinsicWeapon(1, "kicks", 25);
     }
 
     /**

@@ -58,6 +58,26 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
+        gameMap.at(11, 9).addItem(new LargeBolt());
+        gameMap.at(3, 10).addItem(new LargeBolt());
+        gameMap.at(25, 4).addItem(new LargeBolt());
+
+        gameMap.at(5, 7).addItem(new MetalSheet());
+        gameMap.at(23, 7).addItem(new MetalSheet());
+        gameMap.at(14, 2).addItem(new MetalSheet());
+
+        gameMap.at(24, 1).setGround(new Sapling());
+        gameMap.at(8, 5).setGround(new Sapling());
+        gameMap.at(23, 11).setGround(new Mature());
+
+        gameMap.at(21, 3).setGround(new Crater());
+        gameMap.at(3, 4).setGround(new Crater());
+        gameMap.at(26, 13).setGround(new Crater());
+
+        gameMap.at(2, 12).addItem(new MetalPipe());
+        gameMap.at(25, 9).addItem(new MetalPipe());
+        gameMap.at(13, 8).addItem(new MetalPipe());
+
         world.run();
     }
 }

@@ -17,7 +17,6 @@ public class Location implements Printable {
 	private GameMap map;
 	private int x;
 	private int y;
-
 	private List<Item> items = new ArrayList<>();
 	private Ground ground;
 	private List<Exit> exits = new ArrayList<>();
