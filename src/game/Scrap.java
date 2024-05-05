@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.items.Item;
  * An abstract class representing a Scrap item in the game.
  */
 public abstract class Scrap extends Item {
-
+    private boolean isScrap = true;  // Identifier to check if an item is scrap
     /**
      * Constructor for Scrap.
      *
@@ -17,4 +17,9 @@ public abstract class Scrap extends Item {
     public Scrap(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
     }
+    public boolean isScrap() {
+        return isScrap;
+    }
 }
+
+
