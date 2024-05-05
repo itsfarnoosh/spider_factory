@@ -60,7 +60,7 @@ public class HuntsmanSpider extends Enemy {
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return actions
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
