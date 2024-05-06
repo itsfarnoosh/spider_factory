@@ -1,5 +1,6 @@
 package game;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import java.util.Random;
@@ -30,6 +31,7 @@ public class Crater extends Ground {
                 Location spawnLocation = location.getExits().get(rand.nextInt(location.getExits().size()))
                         .getDestination();
                 HuntsmanSpider huntsmanSpider = new HuntsmanSpider();
+                SuspiciousAstronaut suspiciousAstronaut = new SuspiciousAstronaut();
                 if (spawnLocation.canActorEnter(huntsmanSpider)) {
                     if (!spawnLocation.containsAnActor()) {
                         spawnLocation.addActor(huntsmanSpider);

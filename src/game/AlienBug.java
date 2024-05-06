@@ -11,15 +11,13 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 //Intern can attack AlienBug
 //AlienBug wander around
 //AlienBug Follow the intern
 //AlienBug has 2 hit points
-//alien bug doesn't pick up scraps****
+//alien bug  picks up scraps
 //alien bug doesn't drop anything after death***
 
 /**
@@ -34,9 +32,9 @@ public class AlienBug extends Enemy {
 
     public AlienBug(Actor player) {
         super(generateUniqueName(), 'a', 2);
-//      this.behaviours.put(1, new StealScrapsBehaviour()); // Custom behavior for stealing scraps
-        this.behaviours.put(1, new FollowBehaviour(player));// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
-        this.behaviours.put(2, new WanderBehaviour()); // Custom behavior for wandering
+        this.behaviours.put(1, new StealScrapsBehaviour()); // Custom behavior for stealing scraps
+        this.behaviours.put(2, new FollowBehaviour(player));// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
+        this.behaviours.put(3, new WanderBehaviour()); // Custom behavior for wandering
 
 
     }
@@ -60,13 +58,19 @@ public class AlienBug extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if (!isConscious()) {
+            dropAllItems(map);
+            return new DoNothingAction();
+        }
         for (Map.Entry<Integer, Behaviour> behaviourEntry : behaviours.entrySet()) {
             Action action = behaviourEntry.getValue().getAction(this, map);
             if (action != null) {
                 display.println(action.menuDescription(this));
                 return action;
             }
+
         }
+
         return new DoNothingAction();
     }
 
@@ -87,7 +91,13 @@ public class AlienBug extends Enemy {
         return actions;
     }
 
-
-
+    private void dropAllItems(GameMap map) {
+        Location currentLocation = map.locationOf(this);
+        List<Item> itemsToDrop = new ArrayList<>(getItemInventory());  // Make a copy to avoid concurrent modification
+        for (Item item : itemsToDrop) {
+            currentLocation.addItem(item);
+            removeItemFromInventory(item);  // Remove each item from inventory after adding it to the map
+        }
+    }
 
 }

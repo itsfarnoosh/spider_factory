@@ -13,7 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
+//Suspicious Astronaut kills the intern
+//Suspicious Astronaut wander around
+//Suspicious Astronaut cannot enter the Intern’s spaceship ***
 public class SuspiciousAstronaut extends Enemy {
     /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
