@@ -78,6 +78,8 @@ public class Application {
         gameMap.at(25, 9).addItem(new MetalPipe());
         gameMap.at(13, 8).addItem(new MetalPipe());
 
+        gameMap.at(13, 8).addItem(new EnergyDrink());
+
         world.run();
     }
 }
