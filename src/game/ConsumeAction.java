@@ -2,7 +2,6 @@ package game;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 
 public class ConsumeAction extends Action {
@@ -27,8 +26,7 @@ public class ConsumeAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         actor.removeItemFromInventory(item);
-        actor.heal(item.getPoints());
-        return actor + " is healed by " + item.getPoints() + " points! ";
+        return item.consume(actor);
     }
     /**
      * Provides a description of the ConsumeAction for display in menu.
