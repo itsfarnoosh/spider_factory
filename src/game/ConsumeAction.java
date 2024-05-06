@@ -2,19 +2,18 @@ package game;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 
 public class ConsumeAction extends Action {
     /** The Fruit to be consumed. */
-    private final Consumable item;
+    private final Consumable consumable;
     /**
      * Constructor.
      *
-     * @param item the Fruit to be consumed
+     * @param consumable the Fruit to be consumed
      */
-    public ConsumeAction(Consumable item) {
-        this.item = item;
+    public ConsumeAction(Consumable consumable) {
+        this.consumable = consumable;
     }
 
     /**
@@ -26,9 +25,8 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        actor.removeItemFromInventory(item);
-        actor.heal(item.getPoints());
-        return actor + " is healed by " + item.getPoints() + " points! ";
+        actor.removeItemFromInventory(consumable);
+        return consumable.consume(actor);
     }
     /**
      * Provides a description of the ConsumeAction for display in menu.
@@ -38,6 +36,6 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + item;
+        return actor + " consumes " + consumable;
     }
 }

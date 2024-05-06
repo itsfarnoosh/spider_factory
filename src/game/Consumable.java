@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.items.Item;
 
 public abstract class Consumable extends Scrap {
 
-    private final int points;
+    protected final int points;
 
     /***
      * Constructor.
@@ -21,6 +21,10 @@ public abstract class Consumable extends Scrap {
 
     public int getPoints() {
         return points;
+    }
+
+    public String consume(Actor actor) {
+        return "Item has been consumed.";
     }
 
     /**

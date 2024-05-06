@@ -3,7 +3,7 @@ package game;
 /**
  * A class representing a Large Fruit item in the game.
  */
-public class LargeFruit extends Consumable {
+public class LargeFruit extends Fruit {
 
     /**
      * Constructor.

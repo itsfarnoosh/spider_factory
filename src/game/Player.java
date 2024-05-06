@@ -3,6 +3,7 @@ package game;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
@@ -32,6 +33,10 @@ public class Player extends Actor {
         // Handle multi-turn Actions
         if (lastAction.getNextAction() != null)
             return lastAction.getNextAction();
+
+        System.out.println(this.name + "'s Health: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" +
+                this.getAttributeMaximum(BaseActorAttributes.HEALTH));
+        System.out.println(this.name + "'s Wallet Balance: " + this.getBalance());
 
         // return/print the console menu
         Menu menu = new Menu(actions);
