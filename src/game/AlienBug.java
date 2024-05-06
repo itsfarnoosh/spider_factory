@@ -6,12 +6,21 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+//Intern can attack AlienBug
+//AlienBug wander around
+//AlienBug Follow the intern
+//AlienBug has 2 hit points
+//alien bug doesn't pick up scraps****
+//alien bug doesn't drop anything after death***
 
 /**
  * AlienBug class that extends Enemy and includes behaviors for following and collecting scraps.
@@ -23,13 +32,12 @@ public class AlienBug extends Enemy {
     private static final Random random = new Random();
 
 
-    public AlienBug(Actor intern) {
+    public AlienBug(Actor player) {
         super(generateUniqueName(), 'a', 2);
-        this.behaviours.put(1, new WanderBehaviour()); // Custom behavior for wandering
-        this.behaviours.put(2, new StealScrapsBehaviour()); // Custom behavior for stealing scraps
-        this.behaviours.put(3, new DropScrapBehaviour()); // Custom behavior for stealing scraps
-        // within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
-        this.behaviours.put(4, new FollowBehaviour(intern));
+//      this.behaviours.put(1, new StealScrapsBehaviour()); // Custom behavior for stealing scraps
+        this.behaviours.put(1, new FollowBehaviour(player));// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
+        this.behaviours.put(2, new WanderBehaviour()); // Custom behavior for wandering
+
 
     }
 
@@ -52,20 +60,17 @@ public class AlienBug extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
+        for (Map.Entry<Integer, Behaviour> behaviourEntry : behaviours.entrySet()) {
+            Action action = behaviourEntry.getValue().getAction(this, map);
             if (action != null) {
+                display.println(action.menuDescription(this));
                 return action;
             }
         }
         return new DoNothingAction();
     }
-    //It can pick up scraps found on the ground where they are currently standing.
-    //To retrieve the scraps stolen by the Alien Bug, the Intern must attack and
-    // defeat it. When it is defeated, it will drop all scraps in its possession.
-    // this creature enters the Intern’s spaceship, it can steal the scraps on the ground. If the Intern is
-    // alien bugs cannot attack the Intern, it is still considered a hostile creature since it steals valuable scraps that should belong to the factory
-    /**
+
+   /**
      * The Alien bug can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
@@ -81,6 +86,8 @@ public class AlienBug extends Enemy {
         }
         return actions;
     }
+
+
 
 
 }
