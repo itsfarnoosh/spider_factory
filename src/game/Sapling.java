@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class Sapling extends Ground{
     private int age = 0;
+    double matureAge = 5;
+    double PLANT_CHANCE = 0.3;
 
     public Sapling() {
         super('t');
@@ -21,14 +23,11 @@ public class Sapling extends Ground{
         Random rand = new Random();
         Location destination = location.getExits().get(rand.nextInt(location.getExits().size()))
                 .getDestination();
-
-        double matureAge = 5;
         if (age >= matureAge){
             location.setGround(new Mature());
             }
         else {
-            double plantChance = 0.3;
-            if (random <= plantChance) {
+            if (random <= PLANT_CHANCE) {
                 destination.addItem(new SmallFruit());
             }
 
