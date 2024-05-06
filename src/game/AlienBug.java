@@ -23,9 +23,11 @@ import java.util.*;
 /**
  * AlienBug class that extends Enemy and includes behaviors for following and collecting scraps.
  */
-public class AlienBug extends Enemy {
+public class AlienBug extends Actor {
     /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private List<Item> potentialItems = new ArrayList<>();
+
     // This creature has 2 hit points.
     private static final Random random = new Random();
 
@@ -58,23 +60,27 @@ public class AlienBug extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        // First, check if the Alien Bug is still conscious
         if (!isConscious()) {
-            dropAllItems(map);
-            return new DoNothingAction();
+
+            // Drop collected scraps if unconscious
+            dropCollectedScraps(map);
+
         }
+
+        // Process normal turn actions if still conscious
         for (Map.Entry<Integer, Behaviour> behaviourEntry : behaviours.entrySet()) {
             Action action = behaviourEntry.getValue().getAction(this, map);
             if (action != null) {
                 display.println(action.menuDescription(this));
                 return action;
             }
-
         }
-
         return new DoNothingAction();
     }
 
-   /**
+
+    /**
      * The Alien bug can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
      * @param otherActor the Actor that might be performing attack
@@ -91,13 +97,13 @@ public class AlienBug extends Enemy {
         return actions;
     }
 
-    private void dropAllItems(GameMap map) {
-        Location currentLocation = map.locationOf(this);
-        List<Item> itemsToDrop = new ArrayList<>(getItemInventory());  // Make a copy to avoid concurrent modification
-        for (Item item : itemsToDrop) {
-            currentLocation.addItem(item);
-            removeItemFromInventory(item);  // Remove each item from inventory after adding it to the map
-        }
-    }
+    // Method to drop all collected scraps
+    private void dropCollectedScraps(GameMap map) {
 
+        Location location = map.locationOf(this);
+        for (Item scrap : potentialItems) {
+            location.addItem(scrap);
+        }
+        potentialItems.clear(); // Clear the collected scraps list
+    }
 }
