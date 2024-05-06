@@ -3,6 +3,7 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -77,6 +78,14 @@ public class Application {
         gameMap.at(2, 12).addItem(new MetalPipe());
         gameMap.at(25, 9).addItem(new MetalPipe());
         gameMap.at(13, 8).addItem(new MetalPipe());
+
+        gameMap.at(4,1).addItem(new GoldPot());
+        gameMap.at(24, 9).addItem(new GoldPot());
+        gameMap.at(2, 13).addItem(new GoldPot());
+
+        gameMap.at(14,8).addItem(new PickleJar());
+        gameMap.at(19, 9).addItem(new PickleJar());
+        gameMap.at(9, 13).addItem(new PickleJar());
 
         world.run();
     }
