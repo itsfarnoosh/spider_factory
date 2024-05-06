@@ -1,6 +1,4 @@
 package game;
-
-import edu.monash.fit2099.demo.conwayslife.Status;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 
@@ -26,7 +24,8 @@ public class Mature extends Ground{
         Location destination = location.getExits().get(rand.nextInt(location.getExits().size()))
                 .getDestination();
 
-        if (random <= 0.2) {
+        double plantChance = 0.2;
+        if (random <= plantChance) {
                 destination.addItem(new LargeFruit());
             }
 

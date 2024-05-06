@@ -22,11 +22,13 @@ public class Sapling extends Ground{
         Location destination = location.getExits().get(rand.nextInt(location.getExits().size()))
                 .getDestination();
 
-        if (age >= 5){
+        double matureAge = 5;
+        if (age >= matureAge){
             location.setGround(new Mature());
             }
         else {
-            if (random <= 0.3) {
+            double plantChance = 0.3;
+            if (random <= plantChance) {
                 destination.addItem(new SmallFruit());
             }
 
