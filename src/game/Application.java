@@ -3,6 +3,10 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.monash.fit2099.demo.mars.actors.Bug;
+import edu.monash.fit2099.demo.mars.behaviours.FollowBehaviour;
+import edu.monash.fit2099.demo.mars.behaviours.SpitBehaviour;
+import edu.monash.fit2099.demo.mars.items.MartianItem;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
@@ -54,10 +58,15 @@ public class Application {
             }
         }
 
+
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
+
 
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
+
+        AlienBug alienBug = new AlienBug(player);
+        gameMap.at(3, 5).addActor(alienBug);
 
         gameMap.at(11, 9).addItem(new LargeBolt());
         gameMap.at(3, 10).addItem(new LargeBolt());
@@ -87,6 +96,10 @@ public class Application {
         gameMap.at(19, 9).addItem(new PickleJar());
         gameMap.at(9, 13).addItem(new PickleJar());
 
-        world.run();
+
+
+
+
+       world.run();
     }
 }
