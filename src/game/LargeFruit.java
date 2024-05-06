@@ -1,7 +1,5 @@
 package game;
 
-import edu.monash.fit2099.engine.actors.Actor;
-
 /**
  * A class representing a Large Fruit item in the game.
  */
