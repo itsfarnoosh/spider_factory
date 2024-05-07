@@ -23,31 +23,28 @@ import java.util.Objects;
  */
 public class FollowBehaviour implements Behaviour {
 
-    private Actor target = null;
+    private Actor target;
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
 
-        Location here = map.locationOf(actor);
-        Location there = null;
-        int currentDistance = 999999999;
-        if (Objects.isNull(this.target)) {
-            for (Exit exit : here.getExits()) {
-                Location destination = exit.getDestination();
-                if (destination.containsAnActor()) {
-                    if (destination.getActor() instanceof Player) {
-                        this.target = destination.getActor();
-                        there = map.locationOf(target);
-                        currentDistance = distance(here, there);
+        for (int x : map.getXRange()) {
+            for (int y : map.getYRange()) {
+                if (map.at(x, y).containsAnActor()) {
+                    if (map.at(x, y).getActor() instanceof Player) {
+                        this.target = map.at(x, y).getActor();
                     }
                 }
             }
         }
 
-        if (Objects.isNull(this.target)) {
+        if(!map.contains(target) || !map.contains(actor))
             return null;
-        }
 
+        Location here = map.locationOf(actor);
+        Location there = map.locationOf(target);
+
+        int currentDistance = distance(here, there);
         for (Exit exit : here.getExits()) {
             Location destination = exit.getDestination();
             if (destination.canActorEnter(actor)) {
@@ -59,6 +56,7 @@ public class FollowBehaviour implements Behaviour {
         }
 
         return null;
+
     }
 
     /**
