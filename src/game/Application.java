@@ -65,7 +65,7 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
-        AlienBug alienBug = new AlienBug(player);
+        AlienBug alienBug = new AlienBug();
         gameMap.at(3, 5).addActor(alienBug);
 
         gameMap.at(11, 9).addItem(new LargeBolt());
@@ -81,7 +81,7 @@ public class Application {
         gameMap.at(23, 11).setGround(new Mature());
 
         gameMap.at(21, 3).setGround(new Crater(new HuntsmanSpider()));
-        gameMap.at(3, 4).setGround(new Crater(new AlienBug(player)));
+        gameMap.at(3, 4).setGround(new Crater(new AlienBug()));
         gameMap.at(26, 13).setGround(new Crater(new SuspiciousAstronaut()));
 
         gameMap.at(2, 12).addItem(new MetalPipe());

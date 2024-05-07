@@ -32,10 +32,10 @@ public class AlienBug extends Enemy {
     private static final Random random = new Random();
 
 
-    public AlienBug(Actor player) {
+    public AlienBug() {
         super(generateUniqueName(), 'a', 2);
         this.behaviours.put(1, new StealBehaviour()); // Custom behavior for stealing scraps
-        this.behaviours.put(2, new FollowBehaviour(player));// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
+        this.behaviours.put(2, new FollowBehaviour());// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
         this.behaviours.put(3, new WanderBehaviour()); // Custom behavior for wandering
         this.addCapability(Ability.ENTER_SPACESHIP);
         this.spawnChance = 0.1;

@@ -3,13 +3,14 @@ package game;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
  * Class representing Crater Ground type.
  */
 public class Crater extends Ground {
-
     private Enemy spawnCreature;
 
     /**
@@ -19,6 +20,7 @@ public class Crater extends Ground {
         super('u');
         this.spawnCreature = spawnCreature;
     }
+
 
     /**
      * The Crater can spawn Huntsman Spiders at each turn.
