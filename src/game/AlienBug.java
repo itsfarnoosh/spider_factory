@@ -25,7 +25,7 @@ import java.util.*;
  */
 public class AlienBug extends Enemy {
     /** Map of priorities to Behaviours */
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private Map<Integer, Behaviour> behaviours = new TreeMap<>();
     private List<Item> potentialItems = new ArrayList<>();
 
     // This creature has 2 hit points.
