@@ -98,11 +98,6 @@ public class AlienBug extends Enemy {
         return actions;
     }
 
-    @Override
-    public double getSpawnChance() {
-        return this.spawnChance;
-    }
-
     // Method to drop all collected scraps
     private void dropCollectedScraps(GameMap map) {
 

@@ -10,11 +10,14 @@ import java.util.Random;
  */
 public class Crater extends Ground {
 
+    private Enemy spawnCreature;
+
     /**
      * Constructor for crater, a ground object than can spawn huntsman spiders.
      */
-    public Crater() {
+    public Crater(Enemy spawnCreature) {
         super('u');
+        this.spawnCreature = spawnCreature;
     }
 
     /**
@@ -25,16 +28,14 @@ public class Crater extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        if (Math.random() <= 0.05) {
+        if (Math.random() <= this.spawnCreature.getSpawnChance()) {
             Random rand = new Random();
             while (true) {
                 Location spawnLocation = location.getExits().get(rand.nextInt(location.getExits().size()))
                         .getDestination();
-                HuntsmanSpider huntsmanSpider = new HuntsmanSpider();
-                SuspiciousAstronaut suspiciousAstronaut = new SuspiciousAstronaut();
-                if (spawnLocation.canActorEnter(huntsmanSpider)) {
+                if (spawnLocation.canActorEnter(this.spawnCreature)) {
                     if (!spawnLocation.containsAnActor()) {
-                        spawnLocation.addActor(huntsmanSpider);
+                        spawnLocation.addActor(this.spawnCreature);
                         break;
                     }
                 }

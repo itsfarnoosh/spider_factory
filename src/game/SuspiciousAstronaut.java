@@ -48,11 +48,6 @@ public class SuspiciousAstronaut extends Enemy {
         return new DoNothingAction();
     }
 
-    @Override
-    public double getSpawnChance() {
-        return this.getSpawnChance();
-    }
-
     /**
      * Retrieves the intrinsic weapon of the SuspiciousAstronaut .
      *

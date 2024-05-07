@@ -22,6 +22,7 @@ public class HuntsmanSpider extends Enemy {
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
         this.behaviours.put(999, new WanderBehaviour());
+        this.spawnChance = 0.05;
     }
 
     /**

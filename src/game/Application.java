@@ -80,9 +80,9 @@ public class Application {
         gameMap.at(8, 5).setGround(new Sapling());
         gameMap.at(23, 11).setGround(new Mature());
 
-        gameMap.at(21, 3).setGround(new Crater());
-        gameMap.at(3, 4).setGround(new Crater());
-        gameMap.at(26, 13).setGround(new Crater());
+        gameMap.at(21, 3).setGround(new Crater(new HuntsmanSpider()));
+        gameMap.at(3, 4).setGround(new Crater(new AlienBug(player)));
+        gameMap.at(26, 13).setGround(new Crater(new SuspiciousAstronaut()));
 
         gameMap.at(2, 12).addItem(new MetalPipe());
         gameMap.at(25, 9).addItem(new MetalPipe());
