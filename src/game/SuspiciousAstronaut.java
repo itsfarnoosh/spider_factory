@@ -16,15 +16,17 @@ import java.util.Map;
 //Suspicious Astronaut kills the intern
 //Suspicious Astronaut wander around
 //Suspicious Astronaut cannot enter the Intern’s spaceship ***
-public class SuspiciousAstronaut extends Enemy {
+public class SuspiciousAstronaut extends Enemy implements Spawnable{
     /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
+
+    private double spawnChance;
 
 
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
         this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
-
+        this.spawnChance = 0.05;
 
     }
 
@@ -56,5 +58,10 @@ public class SuspiciousAstronaut extends Enemy {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon(){
         return new IntrinsicWeapon(2, "kill", 100);
+    }
+
+    @Override
+    public double getSpawnChance() {
+        return this.spawnChance;
     }
 }
