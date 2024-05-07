@@ -17,7 +17,7 @@ public abstract class Consumable extends Scrap {
     }
 
     public String consume(Actor actor) {
-        return "Item has been consumed.";
+        return null;
     }
 
     /**
