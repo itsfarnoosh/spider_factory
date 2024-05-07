@@ -73,7 +73,6 @@ public class AlienBug extends Enemy {
         for (Map.Entry<Integer, Behaviour> behaviourEntry : behaviours.entrySet()) {
             Action action = behaviourEntry.getValue().getAction(this, map);
             if (action != null) {
-                display.println(action.menuDescription(this));
                 return action;
             }
         }
