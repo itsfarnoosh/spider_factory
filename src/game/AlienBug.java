@@ -23,14 +23,13 @@ import java.util.*;
 /**
  * AlienBug class that extends Enemy and includes behaviors for following and collecting scraps.
  */
-public class AlienBug extends Enemy implements Spawnable {
+public class AlienBug extends Enemy {
     /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
     private List<Item> potentialItems = new ArrayList<>();
 
     // This creature has 2 hit points.
     private static final Random random = new Random();
-    private double spawnChance;
 
 
     public AlienBug(Actor player) {
@@ -39,7 +38,7 @@ public class AlienBug extends Enemy implements Spawnable {
         this.behaviours.put(2, new FollowBehaviour(player));// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
         this.behaviours.put(3, new WanderBehaviour()); // Custom behavior for wandering
         this.addCapability(Ability.ENTER_SPACESHIP);
-        this.spawnChance = 0.1;
+
 
     }
 
@@ -107,10 +106,5 @@ public class AlienBug extends Enemy implements Spawnable {
             location.addItem(scrap);
         }
         potentialItems.clear(); // Clear the collected scraps list
-    }
-
-    @Override
-    public double getSpawnChance() {
-        return this.spawnChance;
     }
 }
