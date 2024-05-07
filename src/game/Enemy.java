@@ -70,4 +70,6 @@ public abstract class Enemy extends Actor {
         }
         return actions;
     }
+
+    public abstract double getSpawnChance();
 }
