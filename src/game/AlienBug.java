@@ -38,7 +38,7 @@ public class AlienBug extends Enemy {
         this.behaviours.put(2, new FollowBehaviour(player));// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
         this.behaviours.put(3, new WanderBehaviour()); // Custom behavior for wandering
         this.addCapability(Ability.ENTER_SPACESHIP);
-
+        this.spawnChance = 0.1;
 
     }
 
@@ -96,6 +96,11 @@ public class AlienBug extends Enemy {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
+    }
+
+    @Override
+    public double getSpawnChance() {
+        return this.spawnChance;
     }
 
     // Method to drop all collected scraps
