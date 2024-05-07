@@ -20,6 +20,8 @@ public abstract class Enemy extends Actor {
      */
     protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
+    protected double spawnChance;
+
     /**
      * The constructor of the Enemy class.
      *
