@@ -11,10 +11,12 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HuntsmanSpider extends Enemy {
+public class HuntsmanSpider extends Enemy implements Spawnable {
 
     /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
+
+    private double spawnChance;
 
     /**
      * Constructor for HuntsmanSpider.
@@ -22,6 +24,7 @@ public class HuntsmanSpider extends Enemy {
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
         this.behaviours.put(999, new WanderBehaviour());
+        this.spawnChance = 0.05;
     }
 
     /**
@@ -71,4 +74,8 @@ public class HuntsmanSpider extends Enemy {
         return actions;
     }
 
+    @Override
+    public double getSpawnChance() {
+        return this.spawnChance;
+    }
 }
