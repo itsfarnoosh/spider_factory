@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 //Suspicious Astronaut kills the intern
@@ -18,7 +19,7 @@ import java.util.Map;
 //Suspicious Astronaut cannot enter the Intern’s spaceship ***
 public class SuspiciousAstronaut extends Enemy {
     /** Map of priorities to Behaviours */
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
 
     public SuspiciousAstronaut() {
