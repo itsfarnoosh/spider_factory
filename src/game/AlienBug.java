@@ -23,7 +23,7 @@ import java.util.*;
 /**
  * AlienBug class that extends Enemy and includes behaviors for following and collecting scraps.
  */
-public class AlienBug extends Actor {
+public class AlienBug extends Enemy {
     /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new HashMap<>();
     private List<Item> potentialItems = new ArrayList<>();
@@ -34,9 +34,10 @@ public class AlienBug extends Actor {
 
     public AlienBug(Actor player) {
         super(generateUniqueName(), 'a', 2);
-        this.behaviours.put(1, new StealScrapsBehaviour()); // Custom behavior for stealing scraps
+        this.behaviours.put(1, new StealBehaviour()); // Custom behavior for stealing scraps
         this.behaviours.put(2, new FollowBehaviour(player));// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
         this.behaviours.put(3, new WanderBehaviour()); // Custom behavior for wandering
+        this.addCapability(Ability.ENTER_SPACESHIP);
 
 
     }
