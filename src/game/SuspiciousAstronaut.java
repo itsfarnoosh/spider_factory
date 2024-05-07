@@ -24,7 +24,7 @@ public class SuspiciousAstronaut extends Enemy {
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
         this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
-
+        this.spawnChance = 0.05;
 
     }
 
@@ -46,6 +46,11 @@ public class SuspiciousAstronaut extends Enemy {
 
         }
         return new DoNothingAction();
+    }
+
+    @Override
+    public double getSpawnChance() {
+        return this.getSpawnChance();
     }
 
     /**
