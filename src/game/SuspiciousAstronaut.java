@@ -21,7 +21,10 @@ public class SuspiciousAstronaut extends Enemy {
     /** Map of priorities to Behaviours */
     private Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
-
+    /**
+     * Constructor.
+     *
+     */
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
         this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
