@@ -16,7 +16,12 @@ public class Mature extends Ground{
         super('T');
     }
 
-
+    /**
+     * Allow the mature tree to count turns
+     * Will add Large fruit onto it's surrounding if the chance is met.
+     *
+     * @param location location of the mature tree.
+     */
     @Override
     public void tick(Location location) {
         super.tick(location);

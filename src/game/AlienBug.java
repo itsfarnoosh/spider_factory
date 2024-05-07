@@ -31,7 +31,10 @@ public class AlienBug extends Enemy {
     // This creature has 2 hit points.
     private static final Random random = new Random();
 
-
+    /**
+     * Constructor.
+     *
+     */
     public AlienBug() {
         super(generateUniqueName(), 'a', 2);
         this.behaviours.put(1, new StealBehaviour()); // Custom behavior for stealing scraps
@@ -98,6 +101,12 @@ public class AlienBug extends Enemy {
     }
 
     // Method to drop all collected scraps
+    /**
+     * The Alien bug will drop all collected scraps
+     * Clear Alien bug's inventory / list
+     *
+     * @param map current map
+     */
     private void dropCollectedScraps(GameMap map) {
 
         Location location = map.locationOf(this);
