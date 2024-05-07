@@ -15,7 +15,7 @@ import java.util.Random;
 /**
  * A behaviour for Actors to steal scraps from their current location.
  */
-public class StealScrapsBehaviour implements Behaviour {
+public class StealBehaviour implements Behaviour {
 
     private Random random = new Random();
 
