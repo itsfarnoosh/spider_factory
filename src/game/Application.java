@@ -97,7 +97,6 @@ public class Application {
         gameMap.at(9, 13).addItem(new PickleJar());
 
        world.run();
-
-       System.out.println(FancyMessage.YOU_ARE_FIRED);
+        System.out.println(FancyMessage.YOU_ARE_FIRED);
     }
 }
