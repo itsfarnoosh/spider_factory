@@ -39,7 +39,7 @@ public class AlienBug extends Enemy {
         super(generateUniqueName(), 'a', 2);
         this.behaviours.put(1, new StealBehaviour()); // Custom behavior for stealing scraps
         this.behaviours.put(2, new FollowBehaviour());// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
-        this.behaviours.put(3, new WanderBehaviour()); // Custom behavior for wandering
+        this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
         this.addCapability(Ability.ENTER_SPACESHIP);
         this.spawnChance = 0.1;
 
@@ -94,11 +94,12 @@ public class AlienBug extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
     }
+
 
     // Method to drop all collected scraps
     /**

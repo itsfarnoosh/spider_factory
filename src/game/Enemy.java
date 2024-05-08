@@ -33,6 +33,7 @@ public abstract class Enemy extends Actor {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.ENEMY);
         this.behaviours.put(0, new AttackBehaviour());
+        this.behaviours.put(999, new WanderBehaviour());
     }
 
     /**

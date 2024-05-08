@@ -13,9 +13,6 @@ import java.util.Map;
 
 public class HuntsmanSpider extends Enemy {
 
-    /** Map of priorities to Behaviours */
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
-
     /**
      * Constructor for HuntsmanSpider.
      */
