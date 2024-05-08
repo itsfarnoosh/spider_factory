@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -64,13 +65,6 @@ public class AlienBug extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        // First, check if the Alien Bug is still conscious
-        if (!isConscious()) {
-
-            // Drop collected scraps if unconscious
-            dropCollectedScraps(map);
-
-        }
 
         // Process normal turn actions if still conscious
         for (Map.Entry<Integer, Behaviour> behaviourEntry : behaviours.entrySet()) {
@@ -94,26 +88,22 @@ public class AlienBug extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            actions.add(new AttackAction(this, direction));
+        if (this.isConscious()) {
+            if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+                actions.add(new AttackAction(this, direction));
+            }
+        } else {
+            // Drop all items if the AlienBug is not conscious (dead)
+            List<Item> itemsToDrop = new ArrayList<>(this.getItemInventory());
+            for (Item item : itemsToDrop) {
+                actions.add(new DropAction(item));
+            }
         }
         return actions;
+
     }
 
 
-    // Method to drop all collected scraps
-    /**
-     * The Alien bug will drop all collected scraps
-     * Clear Alien bug's inventory / list
-     *
-     * @param map current map
-     */
-    private void dropCollectedScraps(GameMap map) {
 
-        Location location = map.locationOf(this);
-        for (Item scrap : potentialItems) {
-            location.addItem(scrap);
-        }
-        potentialItems.clear(); // Clear the collected scraps list
-    }
+
 }
