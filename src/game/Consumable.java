@@ -6,25 +6,19 @@ import edu.monash.fit2099.engine.items.Item;
 
 public abstract class Consumable extends Scrap {
 
-    protected final int points;
-
     /***
      * Constructor.
-     *  @param name the name of this Item
+     *
+     * @param name the name of this Item
      * @param displayChar the character to use to represent this item if it is on the ground
      * @param portable true if and only if the Item can be picked up
      */
-    public Consumable(String name, char displayChar, boolean portable, int points) {
+    public Consumable(String name, char displayChar, boolean portable) {
         super(name, displayChar, portable);
-        this.points = points;
-    }
-
-    public int getPoints() {
-        return points;
     }
 
     public String consume(Actor actor) {
-        return "Item has been consumed.";
+        return null;
     }
 
     /**

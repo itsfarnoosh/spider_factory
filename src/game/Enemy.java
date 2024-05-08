@@ -20,6 +20,8 @@ public abstract class Enemy extends Actor {
      */
     protected Map<Integer, Behaviour> behaviours = new TreeMap<>();
 
+    protected double spawnChance;
+
     /**
      * The constructor of the Enemy class.
      *
@@ -31,6 +33,7 @@ public abstract class Enemy extends Actor {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.ENEMY);
         this.behaviours.put(0, new AttackBehaviour());
+        this.behaviours.put(999, new WanderBehaviour());
     }
 
     /**
@@ -69,5 +72,9 @@ public abstract class Enemy extends Actor {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
+    }
+
+    public double getSpawnChance() {
+        return this.spawnChance;
     }
 }

@@ -13,15 +13,13 @@ import java.util.Map;
 
 public class HuntsmanSpider extends Enemy {
 
-    /** Map of priorities to Behaviours */
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
-
     /**
      * Constructor for HuntsmanSpider.
      */
     public HuntsmanSpider() {
         super("Huntsman Spider", '8', 1);
         this.behaviours.put(999, new WanderBehaviour());
+        this.spawnChance = 0.05;
     }
 
     /**

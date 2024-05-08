@@ -11,12 +11,17 @@ import edu.monash.fit2099.engine.positions.Ground;
  *
  */
 public class Floor extends Ground {
+
+    /**
+     * Constructor.
+     *
+     */
     public Floor() {
         super('_');
     }
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        return !actor.hasCapability(Status.ENEMY);
+        return actor.hasCapability(Ability.ENTER_SPACESHIP);
     }
 }

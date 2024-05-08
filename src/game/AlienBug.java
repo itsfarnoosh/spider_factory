@@ -6,30 +6,42 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
+
+//Intern can attack AlienBug
+//AlienBug wander around
+//AlienBug Follow the intern
+//AlienBug has 2 hit points
+//alien bug  picks up scraps
+//alien bug doesn't drop anything after death***
 
 /**
  * AlienBug class that extends Enemy and includes behaviors for following and collecting scraps.
  */
 public class AlienBug extends Enemy {
     /** Map of priorities to Behaviours */
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
+    private Map<Integer, Behaviour> behaviours = new TreeMap<>();
+    private List<Item> potentialItems = new ArrayList<>();
+
     // This creature has 2 hit points.
     private static final Random random = new Random();
 
-
-    public AlienBug(Actor intern) {
+    /**
+     * Constructor.
+     *
+     */
+    public AlienBug() {
         super(generateUniqueName(), 'a', 2);
-        this.behaviours.put(1, new WanderBehaviour()); // Custom behavior for wandering
-        this.behaviours.put(2, new StealScrapsBehaviour()); // Custom behavior for stealing scraps
-        this.behaviours.put(3, new DropScrapBehaviour()); // Custom behavior for stealing scraps
-        // within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
-        this.behaviours.put(4, new FollowBehaviour(intern));
+        this.behaviours.put(1, new StealBehaviour()); // Custom behavior for stealing scraps
+        this.behaviours.put(2, new FollowBehaviour());// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
+        this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
+        this.addCapability(Ability.ENTER_SPACESHIP);
+        this.spawnChance = 0.1;
 
     }
 
@@ -52,19 +64,25 @@ public class AlienBug extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
+        // First, check if the Alien Bug is still conscious
+        if (!isConscious()) {
+
+            // Drop collected scraps if unconscious
+            dropCollectedScraps(map);
+
+        }
+
+        // Process normal turn actions if still conscious
+        for (Map.Entry<Integer, Behaviour> behaviourEntry : behaviours.entrySet()) {
+            Action action = behaviourEntry.getValue().getAction(this, map);
             if (action != null) {
                 return action;
             }
         }
         return new DoNothingAction();
     }
-    //It can pick up scraps found on the ground where they are currently standing.
-    //To retrieve the scraps stolen by the Alien Bug, the Intern must attack and
-    // defeat it. When it is defeated, it will drop all scraps in its possession.
-    // this creature enters the Intern’s spaceship, it can steal the scraps on the ground. If the Intern is
-    // alien bugs cannot attack the Intern, it is still considered a hostile creature since it steals valuable scraps that should belong to the factory
+
+
     /**
      * The Alien bug can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
      *
@@ -76,11 +94,26 @@ public class AlienBug extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackAction(this, direction));
         }
         return actions;
     }
 
 
+    // Method to drop all collected scraps
+    /**
+     * The Alien bug will drop all collected scraps
+     * Clear Alien bug's inventory / list
+     *
+     * @param map current map
+     */
+    private void dropCollectedScraps(GameMap map) {
+
+        Location location = map.locationOf(this);
+        for (Item scrap : potentialItems) {
+            location.addItem(scrap);
+        }
+        potentialItems.clear(); // Clear the collected scraps list
+    }
 }

@@ -11,18 +11,20 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
-
+//Suspicious Astronaut kills the intern
+//Suspicious Astronaut wander around
+//Suspicious Astronaut cannot enter the Intern’s spaceship ***
 public class SuspiciousAstronaut extends Enemy {
-    /** Map of priorities to Behaviours */
-    private Map<Integer, Behaviour> behaviours = new HashMap<>();
-
-
+    /**
+     * Constructor.
+     *
+     */
     public SuspiciousAstronaut() {
         super("Suspicious Astronaut", 'ඞ', 99);
-        this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
-
+        this.spawnChance = 0.05;
 
     }
 
