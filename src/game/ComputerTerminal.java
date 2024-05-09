@@ -10,14 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerTerminal extends Ground {
+
+    /**
+     * Constructor
+     *
+     */
     public ComputerTerminal(){
         super('=');
     }
 
+    /**
+     * restrict actor from moving into the location
+     *
+     * @param actor the actors
+     * @return restrict access
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         return false;
     }
+
+    /**
+     * Create purchase actions for each item
+     *
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return The purchaseAction for each item
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         List<Action> purchaseActions = new ArrayList<>(
@@ -30,6 +50,12 @@ public class ComputerTerminal extends Ground {
         return actions;
     }
 
+
+    /**
+     * provide the ability for the thrown object to be blockable by the terminal.
+     *
+     * @return Blockable from thrown object
+     */
     @Override
     public boolean blocksThrownObjects() {
         return true;

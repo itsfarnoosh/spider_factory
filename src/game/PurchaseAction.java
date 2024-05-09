@@ -17,28 +17,38 @@ public class PurchaseAction extends Action {
         this.printer = printer;
     }
 
+    /**
+     * Purchasing process at the terminal when player is purchasing an item.
+     *
+     * @return description of the purchasing action
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
-        String ret = "";
+        String result = "";
         int credit = printer.creditPayable();
         Item item = printer.getItem();
 
         if (actor.getBalance() >= credit) {
             actor.deductBalance(credit);
-            ret += credit + " credit is deducted from " + actor + "'s balance\n";
+            result += credit + " credit is deducted from " + actor + "'s balance\n";
             if (printer.printsItem()) {
                 actor.addItemToInventory(item);
-                ret += actor + " gets " + item;
+                result += actor + " gets " + item;
             }else {
-                ret += actor + "did not get " + item;
+                result += actor + "did not get " + item;
             }
         }else {
-            ret += "Insufficient balance";
+            result += "Insufficient balance";
         }
 
-        return ret;
+        return result;
     }
 
+    /**
+     * Description of the action of purchasing that player can make.
+     *
+     * @return description of the action
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " wants to get " + printer;
