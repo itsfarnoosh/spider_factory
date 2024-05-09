@@ -13,14 +13,14 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * A behaviour for Actors to steal scraps from their current location.
+ * A behaviour for Actors to steal a single scrap from their current location randomly.
  */
 public class StealBehaviour implements Behaviour {
 
     private Random random = new Random();
 
     /**
-     * Returns an action for the Actor to steal scraps from the current location.
+     * Returns an action for the Actor to steal a single scrap from the current location randomly.
      *
      * @param actor the Actor enacting the behaviour
      * @param map   the GameMap containing the Actor
@@ -29,24 +29,20 @@ public class StealBehaviour implements Behaviour {
     @Override
     public Action getAction(Actor actor, GameMap map) {
         Location currentLocation = map.locationOf(actor);
-        List<Item> potentialItems = new ArrayList<>();
+        List<Item> itemsAtLocation = new ArrayList<>(currentLocation.getItems());
 
-        // Collect all portable scrap items at the current location
-        for (Item item : currentLocation.getItems()) {
-            potentialItems.add(item);
-            actor.addItemToInventory(item);
+        if (itemsAtLocation.isEmpty()) {
+            return null;  // No items to steal
         }
 
-        for (Item item : potentialItems) {
-            currentLocation.removeItem(item);
-        }
+        // Randomly select one item to steal
+        Item itemToSteal = itemsAtLocation.get(random.nextInt(itemsAtLocation.size()));
 
-        // Randomly select one item to pick up if any are available
-        if (!potentialItems.isEmpty()) {
-            Item toPickUp = potentialItems.get(random.nextInt(potentialItems.size()));
-            return new PickUpAction(toPickUp);
-        }
+        // Add the selected item to the actor's inventory and remove it from the location
+        actor.addItemToInventory(itemToSteal);
+        currentLocation.removeItem(itemToSteal);
 
-        return null;  // No actionable item found
+        // Return a PickUpAction for the item stolen for game mechanics (like logging or messages)
+        return new PickUpAction(itemToSteal);
     }
 }
