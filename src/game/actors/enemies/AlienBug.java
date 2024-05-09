@@ -102,6 +102,12 @@ public class AlienBug extends Enemy {
         return actions;
     }
 
+    /**
+     * Drop all the alien bug's possessions.
+     *
+     * @param map map that the bug is currently in
+     * @return description of what it drop(s)
+     */
     public List<String> dropAllScraps(GameMap map) {
         List<Item> itemsToDrop = new ArrayList<>(this.getItemInventory());
         List<String> actionDescriptions = new ArrayList<>();
@@ -113,6 +119,13 @@ public class AlienBug extends Enemy {
         return actionDescriptions;
     }
 
+    /**
+     * Drop all possessions and remove the alien bug from the map when it is unconscious (die from the hand of other).
+     *
+     * @param actor the alien bug
+     * @param map the map that the bug is currently in
+     * @return description of how the alien bug get demise.
+     */
     @Override
     public String unconscious(Actor actor, GameMap map){
         List<String> dropDescriptions = dropAllScraps(map);
@@ -120,6 +133,12 @@ public class AlienBug extends Enemy {
         return this + " met their demise." + String.join("", dropDescriptions);
     }
 
+    /**
+     * Drop all possessions and remove the alien bug from the map when it is unconscious (die naturally).
+     *
+     * @param map the map that the bug is currently in
+     * @return description of how the alien bug get demise.
+     */
     public String unconscious(GameMap map) {
         List<String> dropDescriptions = dropAllScraps(map);
         map.removeActor(this);
