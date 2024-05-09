@@ -72,12 +72,12 @@ public class AlienBug extends Enemy {
             if (action != null) {
                 return action;
             }
-        if(!this.isConscious()){
-            // Drop all items if the AlienBug is not conscious (dead)
-            List<Item> itemsToDrop = new ArrayList<>(this.getItemInventory());
-            for (Item item : itemsToDrop) {
-                actions.add(new DropAction(item));
-            }}
+            if(!this.isConscious()){
+                // Drop all items if the AlienBug is not conscious (dead)
+                List<Item> itemsToDrop = new ArrayList<>(this.getItemInventory());
+                for (Item item : itemsToDrop) {
+                    actions.add(new DropAction(item));
+                }}
         }
         return new DoNothingAction();
     }
