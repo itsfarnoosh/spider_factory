@@ -82,7 +82,10 @@ public class Application {
 
         gameMap.at(21, 3).setGround(new Crater());
         gameMap.at(3, 4).setGround(new Crater());
-        gameMap.at(26, 13).setGround(new Crater());
+        // specific type crater.
+        Crater testingCrater =  new Crater(new SuspiciousAstronaut());
+        gameMap.at(26, 13).setGround(testingCrater);
+
 
         gameMap.at(2, 12).addItem(new MetalPipe());
         gameMap.at(25, 9).addItem(new MetalPipe());

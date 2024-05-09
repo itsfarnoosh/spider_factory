@@ -23,7 +23,7 @@ public class SuspiciousAstronaut extends Enemy {
      *
      */
     public SuspiciousAstronaut() {
-        super("Suspicious Astronaut", 'ඞ', 99);
+        super("Suspicious Astronaut", 'ඞ', 99, Monster.SUSPICIOUS_ASTRONAUT);
         this.spawnChance = 0.05;
 
     }

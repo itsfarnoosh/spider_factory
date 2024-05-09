@@ -22,19 +22,27 @@ public abstract class Enemy extends Actor {
 
     protected double spawnChance;
 
+    protected Monster monster;
+
     /**
      * The constructor of the Enemy class.
      *
      * @param name        The name of the Enemy
      * @param displayChar The character that will represent the Enemy in the display
      * @param hitPoints   The Enemy's starting hit points
+     * @param monster   The specific type of Enemy
      */
-    public Enemy(String name, char displayChar, int hitPoints) {
+    public Enemy(String name, char displayChar, int hitPoints, Monster monster) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.ENEMY);
         this.behaviours.put(0, new AttackBehaviour());
         this.behaviours.put(999, new WanderBehaviour());
+        this.monster = monster;
     }
+
+    public void setMonster(Monster monster){this.monster = monster;}
+
+    public Monster getMonster(){return this.monster;}
 
     /**
      * At each turn, the Enemy select a valid action to perform.

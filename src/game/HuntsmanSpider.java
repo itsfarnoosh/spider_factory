@@ -17,7 +17,7 @@ public class HuntsmanSpider extends Enemy {
      * Constructor for HuntsmanSpider.
      */
     public HuntsmanSpider() {
-        super("Huntsman Spider", '8', 1);
+        super("Huntsman Spider", '8', 1, Monster.HUNTSMAN_SPIDER);
         this.behaviours.put(999, new WanderBehaviour());
         this.spawnChance = 0.05;
     }

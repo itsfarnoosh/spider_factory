@@ -37,7 +37,7 @@ public class AlienBug extends Enemy {
      *
      */
     public AlienBug() {
-        super(generateUniqueName(), 'a', 2);
+        super(generateUniqueName(), 'a', 2, Monster.ALIEN_BUG);
         this.behaviours.put(1, new StealBehaviour()); // Custom behavior for stealing scraps
         this.behaviours.put(2, new FollowBehaviour());// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
         this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
