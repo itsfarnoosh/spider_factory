@@ -99,7 +99,10 @@ public class Application {
         gameMap.at(19, 9).addItem(new PickleJar());
         gameMap.at(9, 13).addItem(new PickleJar());
 
+        gameMap.at(14, 9).setGround(new ComputerTerminal());
+
        world.run();
-        System.out.println(FancyMessage.YOU_ARE_FIRED);
+
+       System.out.println(FancyMessage.YOU_ARE_FIRED);
     }
 }
