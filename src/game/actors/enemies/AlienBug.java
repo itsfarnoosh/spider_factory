@@ -133,6 +133,7 @@ public class AlienBug extends Enemy {
         return this + " met their demise." + String.join("", dropDescriptions);
     }
 
+
     /**
      * Drop all possessions and remove the alien bug from the map when it is unconscious (die naturally).
      *
