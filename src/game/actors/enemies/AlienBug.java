@@ -50,7 +50,6 @@ public class AlienBug extends Enemy {
         this.addCapability(Ability.ENTER_SPACESHIP);
         this.addCapability(Status.ALIEN_BUG);
         this.spawnChance = 0.1;
-
     }
 
     /**

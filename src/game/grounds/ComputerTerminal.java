@@ -22,18 +22,7 @@ public class ComputerTerminal extends Ground {
     public ComputerTerminal(){
         super('=');
     }
-
-    /**
-     * restrict actor from moving into the location
-     *
-     * @param actor the actors
-     * @return restrict access
-     */
-    @Override
-    public boolean canActorEnter(Actor actor) {
-        return false;
-    }
-
+    
     /**
      * Create purchase actions for each item
      *
