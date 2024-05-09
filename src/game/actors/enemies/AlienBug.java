@@ -111,7 +111,7 @@ public class AlienBug extends Enemy {
         List<String> actionDescriptions = new ArrayList<>();
         for (Item item : itemsToDrop) {
             Action dropAction = new DropAction(item);
-            String result = dropAction.execute(this, map);
+            String result = "\n" + dropAction.execute(this, map);
             actionDescriptions.add(result);
         }
         return actionDescriptions;
@@ -121,12 +121,12 @@ public class AlienBug extends Enemy {
     public String unconscious(Actor actor, GameMap map){
         List<String> dropDescriptions = dropAllScraps(map);
         map.removeActor(this);
-        return this + " met their demise.\n" + String.join("\n", dropDescriptions);
+        return this + " met their demise." + String.join("", dropDescriptions);
     }
 
     public String unconscious(GameMap map) {
         List<String> dropDescriptions = dropAllScraps(map);
         map.removeActor(this);
-        return this + " ceased to exist\n." + String.join("\n", dropDescriptions);
+        return this + " ceased to exist." + String.join("", dropDescriptions);
     }
 }
