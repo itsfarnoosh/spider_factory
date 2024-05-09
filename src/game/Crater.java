@@ -26,6 +26,8 @@ public class Crater extends Ground {
 
     /**
      * Non-default constructor for crater, a ground object that can spawn specific monsters.
+     *
+     * @param enemy an object of enemy for the crater to spawn.
      */
     public Crater(Enemy enemy) {
         super('u');

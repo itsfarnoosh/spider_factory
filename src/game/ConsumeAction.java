@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
 public class ConsumeAction extends Action {
-    /** The Fruit to be consumed. */
+    /** The consumable item. */
     private final Consumable consumable;
     /**
      * Constructor.
