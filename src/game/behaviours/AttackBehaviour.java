@@ -18,7 +18,7 @@ import java.util.Random;
  */
 public class AttackBehaviour implements Behaviour {
 
-    private final Random random = new Random();
+    private Random random = new Random();
 
     /**
      * Returns an AttackAction to attack another actor, if possible. If there is no one to attack,

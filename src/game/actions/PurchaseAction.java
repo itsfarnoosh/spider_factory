@@ -34,12 +34,12 @@ public class PurchaseAction extends Action {
             result += credit + " credit is deducted from " + actor + "'s balance\n";
             if (printer.printsItem()) {
                 actor.addItemToInventory(item);
-                result += actor + " gets " + item;
+                result += actor + " has purchased a " + item;
             }else {
-                result += actor + "did not get " + item;
+                result += actor + "did not purchase a " + item;
             }
         }else {
-            result += "Insufficient balance";
+            result += "Insufficient balance.";
         }
 
         return result;
@@ -52,6 +52,6 @@ public class PurchaseAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " wants to get " + printer;
+        return actor + " wants to purchase a " + printer;
     }
 }

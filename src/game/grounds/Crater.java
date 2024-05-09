@@ -15,7 +15,7 @@ import java.util.Random;
  */
 public class Crater extends Ground {
 
-    private int indexToSpawn;
+    private final int indexToSpawn;
 
     /**
      * Constructor for crater, a ground object that can spawn monsters (randomised).

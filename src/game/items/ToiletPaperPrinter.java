@@ -9,7 +9,7 @@ import java.util.Random;
 public class ToiletPaperPrinter implements Printer {
     private final ToiletPaper item = new ToiletPaper();
     private int credit;
-    private int successChance; // chance of intern paying 1 credit
+    private final int successChance; // chance of intern paying 1 credit
 
     /**
      * Constructor
@@ -25,7 +25,7 @@ public class ToiletPaperPrinter implements Printer {
     /**
      * Provide the item (the toilet paper)
      *
-     * @result defensive copy of toilet paper.
+     * @return defensive copy of toilet paper.
      */
     public Item getItem() {
         return new ToiletPaper();

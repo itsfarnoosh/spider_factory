@@ -35,9 +35,6 @@ public class AlienBug extends Enemy {
      * Map of priorities to Behaviours
      */
     private Map<Integer, Behaviour> behaviours = new TreeMap<>();
-    private List<Item> potentialItems = new ArrayList<>();
-
-    // This creature has 2 hit points.
     private static final Random random = new Random();
 
     /**
@@ -49,7 +46,6 @@ public class AlienBug extends Enemy {
         this.behaviours.put(2, new FollowBehaviour());// within the surroundings of the bug (i.e. one exit away), it will start following the Intern.
         this.behaviours.put(999, new WanderBehaviour()); // Custom behavior for wandering
         this.addCapability(Ability.ENTER_SPACESHIP);
-        this.addCapability(Status.ALIEN_BUG);
         this.spawnChance = 0.1;
 
     }

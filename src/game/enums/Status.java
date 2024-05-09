@@ -9,7 +9,4 @@ package game.enums;
 public enum Status {
     HOSTILE_TO_ENEMY,
     ENEMY,
-    HUNTSMAN_SPIDER,
-    ALIEN_BUG,
-    SUSPICIOUS_ASTRONAUT
 }

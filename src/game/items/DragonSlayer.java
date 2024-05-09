@@ -17,7 +17,7 @@ public class DragonSlayer extends WeaponItem {
      *
      */
     public DragonSlayer(){
-        super("Dragon Slayer!", 'x', 50, "Clank", 75);
+        super("Dragon Slayer", 'x', 50, "slays", 75);
     }
 
     /**

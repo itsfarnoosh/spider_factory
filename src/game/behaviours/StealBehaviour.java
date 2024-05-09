@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class StealBehaviour implements Behaviour {
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     /**
      * Returns an action for the Actor to steal a single scrap from the current location randomly.

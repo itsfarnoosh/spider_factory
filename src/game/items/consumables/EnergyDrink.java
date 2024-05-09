@@ -9,7 +9,7 @@ public class EnergyDrink extends Consumable {
     /**
      * Constructor.
      *
-     * @param healingPoints the amount of healpoint the consumable can restore when consume.
+     * @param healingPoints the amount of healingPoints the consumable can restore when consume.
      */
     public EnergyDrink(int healingPoints){
         super("Energy Drink", '*', true);
@@ -20,7 +20,7 @@ public class EnergyDrink extends Consumable {
      * Heals the holder of the drink (by consuming).
      *
      * @param actor the holder of the drink.
-     * @return description of who consume the drink as well as how much hitpoint is restored.
+     * @return description of who consume the drink as well as how much hitPoints is restored.
      */
     @Override
     public String consume(Actor actor) {

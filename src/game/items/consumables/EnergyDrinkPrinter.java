@@ -8,11 +8,11 @@ import java.util.Random;
 
 public class EnergyDrinkPrinter implements Printer {
 
-    private int healingPoints = 1;
+    private final int healingPoints = 1;
     private final EnergyDrink item = new EnergyDrink(healingPoints);
     private int credit;
 
-    private int successChance; // chance of intern paying double
+    private final int successChance; // chance of intern paying double
 
     /**
      * Constructor
