@@ -89,6 +89,8 @@ public class Application {
         Crater testingCrater =  new Crater(new SuspiciousAstronaut());
         gameMap.at(26, 13).setGround(testingCrater);
 
+        Crater testingCrater2 =  new Crater(new AlienBug());
+        gameMap.at(26, 13).setGround(testingCrater2);
 
         gameMap.at(2, 12).addItem(new MetalPipe());
         gameMap.at(25, 9).addItem(new MetalPipe());
@@ -104,8 +106,8 @@ public class Application {
 
         gameMap.at(14, 9).setGround(new ComputerTerminal());
 
-       world.run();
+        world.run();
 
-       System.out.println(FancyMessage.YOU_ARE_FIRED);
+        System.out.println(FancyMessage.YOU_ARE_FIRED);
     }
 }
