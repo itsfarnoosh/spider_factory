@@ -52,6 +52,6 @@ public class SuspiciousAstronaut extends Enemy {
      */
     @Override
     public IntrinsicWeapon getIntrinsicWeapon(){
-        return new IntrinsicWeapon(4, "kill", 100);
+        return new IntrinsicWeapon(4, "bonks", 100);
     }
 }
