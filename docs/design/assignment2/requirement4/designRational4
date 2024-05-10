@@ -38,7 +38,11 @@ In terms of why these new class are extendable to the prior classes:
 - PurchaseAction is an extends of Action class as it will be display on intern's choice of action and execute if intern
   select it.
 
- - Concepts and theories you've learnt so far (e.g., DRY, coupling and cohesion, etc.):
+Concepts and theories:
+
+- DRY: avoid code repetition through extends and implementation of other class or interface.
+       e.g. relationship between printer interface and other printer sub-classes such as dragonSlayerPrinter,
+            energyDrinkPrinter, and toiletPaperPrinter.
 
 - SRP: Each new classes is produced to deal with at most 2 responsibility.
        For example:
@@ -52,21 +56,15 @@ In terms of why these new class are extendable to the prior classes:
         toiletPaperPrinter:  --|
         purchaseAciton: checking if use have sufficient balance and call printer class according to the provided one.
 
-Concepts and theories:
-
-- DRY: avoid code repetition through extends and implementation of other class or interface.
-       e.g. relationship between printer interface and other printer sub-classes such as dragonSlayerPrinter,
-            energyDrinkPrinter, and toiletPaperPrinter.
-
 - OCP: e.g. if energy drink have other affect such as buff, a new method can easily be added to the consume method which
        will both heal and add buff status.
-
-- ISP: All the printer sub-classes isn't being forced to and is using all the methods that printer interface provide.
 
 - LSP: e.g.
         - dragonSlayerPrinter in substitution of printer.
         - energyDrink can be use in substitution of item.
         - dragonSlayer can be use in substitution of WeaponItem.
+
+- ISP: All the printer sub-classes isn't being forced to and is using all the methods that printer interface provide.
 
 - Defensive copy: For getitem() method for each printer sub-classes return a new object of the item.
 
