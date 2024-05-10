@@ -2,7 +2,6 @@ package game.items.consumables;
 
 import edu.monash.fit2099.engine.items.Item;
 import game.items.Printer;
-import game.items.consumables.EnergyDrink;
 
 import java.util.Random;
 

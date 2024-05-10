@@ -1,8 +1,6 @@
 package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
-import game.items.Printer;
-import game.items.ToiletPaper;
 
 import java.util.Random;
 

@@ -1,7 +1,6 @@
 package game.items.consumables;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import game.items.consumables.Consumable;
 
 public class GoldPot extends Consumable {
     private final int INCREASE_AMOUNT = 10;

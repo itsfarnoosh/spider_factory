@@ -1,7 +1,5 @@
 package game.items.consumables;
 
-import game.items.consumables.Fruit;
-
 /**
  * A class representing a Small Fruit item in the game.
  */
