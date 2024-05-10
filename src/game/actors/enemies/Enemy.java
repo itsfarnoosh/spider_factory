@@ -88,6 +88,11 @@ public abstract class Enemy extends Actor {
         return actions;
     }
 
+    /**
+     * Getter for the chance to spawn at each turn from a crater for this enemy.
+     *
+     * @return the enemy's spawn chance.
+     */
     public double getSpawnChance() {
         return this.spawnChance;
     }
