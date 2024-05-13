@@ -36,7 +36,7 @@ public class PurchaseAction extends Action {
                 actor.addItemToInventory(item);
                 result += actor + " has purchased a " + item;
             }else {
-                result += actor + "did not purchase a " + item;
+                result += actor + " did not purchase a " + item;
             }
         }else {
             result += "Insufficient balance.";
