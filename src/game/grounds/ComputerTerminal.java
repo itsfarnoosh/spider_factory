@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.items.AstleyPrinter;
 import game.items.DragonSlayerPrinter;
 import game.items.consumables.EnergyDrinkPrinter;
 import game.actions.PurchaseAction;
@@ -36,7 +37,8 @@ public class ComputerTerminal extends Ground {
         List<Action> purchaseActions = new ArrayList<>(
                 List.of(new PurchaseAction(new EnergyDrinkPrinter(10, 20)),
                         new PurchaseAction(new DragonSlayerPrinter(100, 50)),
-                        new PurchaseAction(new ToiletPaperPrinter(5, 75))));
+                        new PurchaseAction(new ToiletPaperPrinter(5, 75)),
+                        new PurchaseAction(new AstleyPrinter(50))));
 
         ActionList actions = new ActionList();
         actions.add(purchaseActions);
