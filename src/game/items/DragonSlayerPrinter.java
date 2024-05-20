@@ -15,8 +15,6 @@ public class DragonSlayerPrinter implements Printer {
     /**
      * Constructor
      *
-     * @param credit the price of the Dragon-slayer. GRIFFITH!!!
-     * @param chance  the chance of the sword being print.
      */
     public DragonSlayerPrinter(){
         this.credit = 50;
