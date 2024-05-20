@@ -7,21 +7,25 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.items.AstleyPrinter;
 import game.items.DragonSlayerPrinter;
+import game.items.Printer;
 import game.items.consumables.EnergyDrinkPrinter;
 import game.actions.PurchaseAction;
 import game.items.ToiletPaperPrinter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ComputerTerminal extends Ground {
+    private ArrayList<Printer> itemPrinters;
 
     /**
      * Constructor
      *
      */
-    public ComputerTerminal(){
+    public ComputerTerminal(ArrayList<Printer> itemPrinters){
         super('=');
+        this.itemPrinters = itemPrinters;
     }
     
     /**
@@ -34,14 +38,10 @@ public class ComputerTerminal extends Ground {
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
-        List<Action> purchaseActions = new ArrayList<>(
-                List.of(new PurchaseAction(new EnergyDrinkPrinter(10, 20)),
-                        new PurchaseAction(new DragonSlayerPrinter(100, 50)),
-                        new PurchaseAction(new ToiletPaperPrinter(5, 75)),
-                        new PurchaseAction(new AstleyPrinter(50))));
-
         ActionList actions = new ActionList();
-        actions.add(purchaseActions);
+        for(Printer printer: itemPrinters){
+            actions.add(new PurchaseAction(printer));
+        }
         return actions;
     }
 
