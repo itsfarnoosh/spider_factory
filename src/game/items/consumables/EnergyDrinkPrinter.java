@@ -16,12 +16,11 @@ public class EnergyDrinkPrinter implements Printer {
     /**
      * Constructor
      *
-     * @param credit the original price of the drink
-     * @param chance chance of the drink to be double priced
+
      */
-    public EnergyDrinkPrinter(int credit, int chance){
-        this.credit = credit;
-        this.successChance = chance;
+    public EnergyDrinkPrinter(){
+        this.credit = 10;
+        this.successChance = 20;
     }
 
     /**
