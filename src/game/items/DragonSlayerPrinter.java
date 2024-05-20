@@ -18,9 +18,9 @@ public class DragonSlayerPrinter implements Printer {
      * @param credit the price of the Dragon-slayer. GRIFFITH!!!
      * @param chance  the chance of the sword being print.
      */
-    public DragonSlayerPrinter(int credit, int chance){
-        this.credit = credit;
-        this.successChance = chance;
+    public DragonSlayerPrinter(){
+        this.credit = 50;
+        this.successChance = 50;
     }
 
     /**
@@ -33,7 +33,7 @@ public class DragonSlayerPrinter implements Printer {
     }
 
     /**
-     * Porvide the price of the Dragon-Slayer
+     * Provide the price of the Dragon-Slayer
      *
      * @return the price of the Dragon-Slayer
      */
