@@ -5,8 +5,8 @@ import edu.monash.fit2099.engine.items.Item;
 public class AstleyPrinter implements Printer {
     private final int price;
 
-    public AstleyPrinter(int price) {
-        this.price = price;
+    public AstleyPrinter() {
+        this.price = 50;
     }
 
     @Override
