@@ -7,17 +7,15 @@ import java.util.Random;
 public class ToiletPaperPrinter implements Printer {
     private final ToiletPaper item = new ToiletPaper();
     private int credit;
-    private final int successChance; // chance of intern paying 1 credit
+    private int successChance; // chance of intern paying 1 credit
 
     /**
      * Constructor
      *
-     * @param credit the original price of the drink
-     * @param chance chance of the drink to be double priced
      */
-    public ToiletPaperPrinter(int credit, int chance){
-        this.credit = credit;
-        this.successChance = chance;
+    public ToiletPaperPrinter(){
+        this.credit = 5;
+        this.successChance = 75;
     }
 
     /**
