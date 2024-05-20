@@ -1,8 +1,11 @@
 package game.system;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -13,6 +16,7 @@ import game.actors.Player;
 import game.actors.enemies.SuspiciousAstronaut;
 import game.grounds.*;
 import game.items.*;
+import game.items.consumables.EnergyDrinkPrinter;
 import game.items.consumables.GoldPot;
 import game.items.consumables.PickleJar;
 
@@ -68,6 +72,9 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
+        player.addBalance(1000);
+        player.modifyAttribute(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE, 1000);
+
         AlienBug alienBug = new AlienBug();
         gameMap.at(3, 5).addActor(alienBug);
 
@@ -89,9 +96,6 @@ public class Application {
         Crater testingCrater =  new Crater(new SuspiciousAstronaut());
         gameMap.at(26, 13).setGround(testingCrater);
 
-        Crater testingCrater2 =  new Crater(new AlienBug());
-        gameMap.at(26, 13).setGround(testingCrater2);
-
         gameMap.at(2, 12).addItem(new MetalPipe());
         gameMap.at(25, 9).addItem(new MetalPipe());
         gameMap.at(13, 8).addItem(new MetalPipe());
@@ -104,7 +108,14 @@ public class Application {
         gameMap.at(19, 9).addItem(new PickleJar());
         gameMap.at(9, 13).addItem(new PickleJar());
 
-        gameMap.at(14, 9).setGround(new ComputerTerminal());
+
+        ArrayList<Printer> itemPrinters = new ArrayList<>();
+        itemPrinters.add(new EnergyDrinkPrinter());
+        itemPrinters.add(new DragonSlayerPrinter());
+        itemPrinters.add(new ToiletPaperPrinter());
+        itemPrinters.add(new AstleyPrinter());
+
+        gameMap.at(14, 9).setGround(new ComputerTerminal(itemPrinters));
 
         world.run();
 
