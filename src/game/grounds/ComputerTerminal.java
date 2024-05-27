@@ -25,7 +25,7 @@ public class ComputerTerminal extends Ground {
         this.itemPrinters = itemPrinters;
         this.factoryMap = factoryMap;
         this.moonMap = moonMap;
-        this.itemPrinters.add(new TheseusPrinter()); // Add THESEUS to the list of printers
+
     }
 
     @Override
