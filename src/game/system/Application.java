@@ -140,6 +140,8 @@ public class Application {
         gameMap.at(19, 9).addItem(new PickleJar());
         gameMap.at(9, 13).addItem(new PickleJar());
 
+        gameMap.at(14, 8).addItem(new Astley());
+
         // Set up item printers
         ArrayList<Printer> itemPrinters = new ArrayList<>();
         itemPrinters.add(new EnergyDrinkPrinter());
@@ -147,6 +149,7 @@ public class Application {
         itemPrinters.add(new ToiletPaperPrinter());
         itemPrinters.add(new AstleyPrinter());
         itemPrinters.add(new TheseusPrinter()); // Add TheseusPrinter to the list
+
 
         // Add computer terminal with travel actions
         ComputerTerminal computerTerminal = new ComputerTerminal(itemPrinters, parkingLotMap, moonMap);
