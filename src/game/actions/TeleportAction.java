@@ -9,14 +9,26 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Random;
-
+/**
+ * An Action to teleport an Actor to a random location within the same map.
+ */
 public class TeleportAction extends Action {
     private Item teleporter;
-
+    /**
+     * Constructor for the TeleportAction.
+     *
+     * @param teleporter The item that allows the Actor to teleport.
+     */
     public TeleportAction(Item teleporter) {
         this.teleporter = teleporter;
     }
-
+    /**
+     * Executes the teleport action, moving the Actor to a random location within the same map.
+     *
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return A description of the action result.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         Random rand = new Random();
@@ -33,7 +45,12 @@ public class TeleportAction extends Action {
         map.moveActor(actor, newLocation);
         return actor + " uses " + teleporter + " to teleport to (" + x + ", " + y + ").";
     }
-
+    /**
+     * Returns a description of the action suitable for displaying in the menu.
+     *
+     * @param actor The actor performing the action.
+     * @return A string describing the action.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "Teleport with THESEUS";
