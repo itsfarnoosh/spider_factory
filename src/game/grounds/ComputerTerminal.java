@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.TravelAction;
 import game.items.AstleyPrinter;
 import game.items.DragonSlayerPrinter;
 import game.items.Printer;
@@ -42,6 +43,12 @@ public class ComputerTerminal extends Ground {
         for(Printer printer: itemPrinters){
             actions.add(new PurchaseAction(printer));
         }
+        // Add travel actions based on the current location
+        if (location.getGround().getDisplayChar() == '=') { // Assuming '=' is the terminal
+            actions.add(new TravelAction("Factory"));
+            actions.add(new TravelAction("New Moon"));
+        }
+
         return actions;
     }
 
