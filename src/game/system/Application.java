@@ -1,3 +1,5 @@
+// File path: game/system/Application.java
+
 package game.system;
 
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ import game.items.consumables.PickleJar;
 /**
  * The main class to start the game.
  * Created by:
- * @author Adrian Kristanto
+ * Adrian Kristanto
  * Modified by:
  *
  */
@@ -36,25 +38,59 @@ public class Application {
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
                 new Wall(), new Floor(), new Puddle());
 
+        // added new maps needed in Req 1
         List<String> map = Arrays.asList(
-                        "...~~~~.........~~~...........",
-                        "...~~~~.......................",
-                        "...~~~........................",
-                        "..............................",
-                        ".............#####............",
-                        ".............#___#...........~",
-                        ".............#___#..........~~",
-                        ".............##_##.........~~~",
-                        ".................~~........~~~",
-                        "................~~~~.......~~~",
-                        ".............~~~~~~~........~~",
-                        "......~.....~~~~~~~~.........~",
-                        ".....~~~...~~~~~~~~~..........",
-                        ".....~~~~~~~~~~~~~~~~........~",
-                        ".....~~~~~~~~~~~~~~~~~~~....~~");
+                "...~~~~.........~~~...........",
+                "...~~~~.......................",
+                "...~~~........................",
+                "..............................",
+                ".............#####............",
+                ".............#___#...........~",
+                ".............#___#..........~~",
+                ".............##_##.........~~~",
+                ".................~~........~~~",
+                "................~~~~.......~~~",
+                ".............~~~~~~~........~~",
+                "......~.....~~~~~~~~.........~",
+                ".....~~~...~~~~~~~~~..........",
+                ".....~~~~~~~~~~~~~~~~........~",
+                ".....~~~~~~~~~~~~~~~~~~~....~~");
 
         GameMap gameMap = new GameMap(groundFactory, map);
         world.addGameMap(gameMap);
+
+        List<String> parkingLot = Arrays.asList(
+                ".......",
+                ".#####.",
+                ".#___#.",
+                ".#___#.",
+                ".##_##.",
+                ".......",
+                ".......",
+                ".......",
+                ".......",
+                ".......");
+        GameMap parkingLotMap = new GameMap(groundFactory, parkingLot);
+        world.addGameMap(parkingLotMap);
+
+        List<String> moon = Arrays.asList(
+                "..........................~~~~",
+                "..........................~~~~",
+                "..........................~~~~",
+                "~..........................~..",
+                "~~...........#####............",
+                "~~~..........#___#............",
+                "~~~..........#___#............",
+                "~~~..........##_##............",
+                "~~~..................~~.......",
+                "~~~~................~~~~......",
+                "~~~~...............~~~~~......",
+                "..~................~~~~.......",
+                "....................~~........",
+                ".............~~...............",
+                "............~~~~..............");
+        GameMap moonMap = new GameMap(groundFactory, moon);
+        world.addGameMap(moonMap);
 
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
@@ -65,9 +101,7 @@ public class Application {
             }
         }
 
-
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
-
 
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
@@ -108,12 +142,12 @@ public class Application {
         gameMap.at(19, 9).addItem(new PickleJar());
         gameMap.at(9, 13).addItem(new PickleJar());
 
-
         ArrayList<Printer> itemPrinters = new ArrayList<>();
         itemPrinters.add(new EnergyDrinkPrinter());
         itemPrinters.add(new DragonSlayerPrinter());
         itemPrinters.add(new ToiletPaperPrinter());
         itemPrinters.add(new AstleyPrinter());
+        itemPrinters.add(new TheseusPrinter()); // Add TheseusPrinter to the list
 
         gameMap.at(14, 9).setGround(new ComputerTerminal(itemPrinters));
 
