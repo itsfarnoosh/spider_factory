@@ -153,9 +153,14 @@ public class Application {
         itemPrinters.add(new TheseusPrinter()); // Add TheseusPrinter to the list
 
 
-        // Add computer terminal with travel actions
-        ComputerTerminal computerTerminal = new ComputerTerminal(itemPrinters, parkingLotMap, moonMap);
-        gameMap.at(14, 9).setGround(computerTerminal);
+        // Add computer terminal with travel actions to the main game map
+        ComputerTerminal computerTerminalMainMap = new ComputerTerminal(itemPrinters, gameMap, moonMap);
+        gameMap.at(14, 9).setGround(computerTerminalMainMap);
+
+        // Add computer terminal with travel actions to the moon map
+        ComputerTerminal computerTerminalMoonMap = new ComputerTerminal(itemPrinters, gameMap, moonMap);
+        moonMap.at(5, 5).setGround(computerTerminalMoonMap); // Placing the terminal at (5, 5) on the moon map
+
 
         // Run the game
         world.run();

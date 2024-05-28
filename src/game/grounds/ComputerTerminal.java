@@ -53,12 +53,11 @@ public class ComputerTerminal extends Ground {
             actions.add(new PurchaseAction(printer));
         }
 
-        // Add travel actions
-        if (location.map() != factoryMap) {
-            actions.add(new TravelAction(factoryMap.at(1, 1), "Factory"));
-        }
-        if (location.map() != moonMap) {
+        // Add travel actions based on the current map
+        if (location.map() == factoryMap) {
             actions.add(new TravelAction(moonMap.at(1, 1), "New Moon"));
+        } else if (location.map() == moonMap) {
+            actions.add(new TravelAction(factoryMap.at(1, 1), "Factory"));
         }
 
         return actions;
