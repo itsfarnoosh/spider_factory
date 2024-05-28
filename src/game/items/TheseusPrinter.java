@@ -7,14 +7,13 @@ import java.util.Random;
 public class TheseusPrinter implements Printer {
     private final Theseus item = new Theseus();
     private int credit;
-    private int successChance; // chance of reducing price
 
     /**
      * Constructor
      */
     public TheseusPrinter() {
         this.credit = 100;
-        this.successChance = 50; // 50% chance to reduce price for example
+
     }
 
     /**
@@ -33,11 +32,7 @@ public class TheseusPrinter implements Printer {
      * @return the price in integer for THESEUS
      */
     public int creditPayable() {
-        int percentage = new Random().nextInt(100);
 
-        if (percentage < this.successChance) {
-            this.credit = 50; // Reduced price if success chance is met
-        }
         return credit;
     }
 
