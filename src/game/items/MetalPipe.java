@@ -10,7 +10,6 @@ import game.enums.Sellable;
 import game.enums.Status;
 import game.actions.AttackAction;
 
-import java.util.Random;
 
 /**
  * Class representing the Metal Pipe Scrap Item, which can be used as a Weapon.

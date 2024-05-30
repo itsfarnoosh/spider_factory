@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import game.enums.Sellable;
 import game.items.SellableItem;
 
-import java.util.Random;
 
 /**
  * A class representing a Large Fruit item in the game.

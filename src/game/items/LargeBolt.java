@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.enums.Sellable;
 
-import java.util.Random;
 
 /**
  * A class representing a Large Bolt item in the game.
