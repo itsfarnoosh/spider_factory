@@ -6,17 +6,20 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.HumanoidFigure;
 import game.actors.Player;
 import game.actors.enemies.AlienBug;
 import game.actors.enemies.HuntsmanSpider;
 import game.actors.enemies.SuspiciousAstronaut;
 import game.enums.Ability;
+import game.enums.Status;
 import game.grounds.*;
 import game.grounds.trees.Inheritree;
 import game.grounds.trees.SproutState;
 import game.items.*;
 import game.items.consumables.EnergyDrinkPrinter;
 import game.items.consumables.GoldPot;
+import game.items.consumables.LargeFruit;
 import game.items.consumables.PickleJar;
 
 import java.util.ArrayList;
@@ -105,6 +108,19 @@ public class Application {
         // Add actors and items to the main game map
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
         Player player = new Player("Intern", '@', 4);
+        // test selling items.
+//        player.addItemToInventory(new DragonSlayer()); checked
+//        player.addItemToInventory(new LargeBolt());  checked
+//        player.addItemToInventory(new MetalSheet()); checked
+//        player.addItemToInventory(new LargeFruit()); checked
+//        player.addItemToInventory(new PickleJar()); checked
+//        player.addItemToInventory(new MetalPipe()); checked
+//        player.addItemToInventory(new GoldPot()); checked
+//        player.addItemToInventory(new ToiletPaper()); checked
+
+
+
+
         world.addPlayer(player, gameMap.at(15, 6));
 
         player.addBalance(1000);
@@ -160,6 +176,11 @@ public class Application {
         // Add computer terminal with travel actions to the moon map
         ComputerTerminal computerTerminalMoonMap = new ComputerTerminal(itemPrinters, gameMap, moonMap);
         moonMap.at(5, 5).setGround(computerTerminalMoonMap); // Placing the terminal at (5, 5) on the moon map
+
+
+        parkingLotMap.at(3, 8).addActor(new HumanoidFigure());
+        // for testing
+        gameMap.at(15, 8).addActor(new HumanoidFigure()); // checked
 
 
         // Run the game
