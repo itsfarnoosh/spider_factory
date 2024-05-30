@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
+import game.enums.Status;
 
 public class DragonSlayer extends WeaponItem {
 
@@ -29,7 +30,8 @@ public class DragonSlayer extends WeaponItem {
     @Override
     public ActionList allowableActions(Actor otherActor, Location location) {
         ActionList actions = super.allowableActions(location);
-        actions.add(new AttackAction(otherActor, location.toString(), this));
+        if (otherActor.hasCapability(Status.ENEMY))
+            actions.add(new AttackAction(otherActor, location.toString(), this));
         return actions;
     }
 }
