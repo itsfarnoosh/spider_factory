@@ -51,12 +51,20 @@ These following classes were created to assist and developed previous code to ma
   SellingAction:
   In SellingAction, sellableItem, the buyer, and the intern (the seller) will be taken as the class attributes. In
   execute method, the sellable item's sellItem(Actor actor) methods will get called with intern as the method's
-  parameter. If the selling process is successful, the text "The intern sold the (the item) for $(the price).". If the
-  selling wasn't successful (where the process will check if the seller's health attribute have reached 0), ((the
-  seller) is instantly killed by (the buyer)) for selling certain item, then the "YOU ARE FIRED" text will pop up as the
+  parameter. If the selling process is successful, the text "The intern sold the (the item) for $(the price)." will show
+  up whilst If the selling wasn't successful (where the process will check if the seller's health attribute have reached
+  0), the text "(the seller) is instantly killed by (the buyer)" will show, then the "YOU ARE FIRED" will show up as the
   game is terminate. For menuDescription method, the method will print out a text which says "Sell (the item)." for the
   intern to select if they want to sell that particular item. In terms of re-usability, this method will works with any
   item objects that has SELLABLE in their capability as well as implementing SellableItem.
+
+  Toilet paper punish: For toilet paper, if the provided chance is met, the player will be killed instantly by the
+  humanoid figure. In terms of implementation idea, I assign dealing damage within toilet paper class (as it is its
+  passive affects) whilst checking for player's health and provide text "The intern is instantly killed by the humanoid
+  figure." in SellingAction (for re-usability). By not associating humanoid figure directly into this process, the code
+  will become more versatile as any future actor that will have the ability to buy intern's item will be able to re-use
+  code instead of making killing action specifically for themselves which would result in repeating for every actor that
+  can buy intern's item.
 
 **
 The main reason to why I didn't implement as new Sellable concrete class that has both new price and chance attribute
