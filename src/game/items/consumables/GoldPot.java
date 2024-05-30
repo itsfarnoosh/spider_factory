@@ -4,9 +4,16 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
+import game.enums.Sellable;
+import game.items.SellableItem;
 
-public class GoldPot extends Item implements Consumable {
+import java.util.Random;
+
+public class GoldPot extends Item implements Consumable, SellableItem {
     private final int INCREASE_AMOUNT = 10;
+
+    private int price;
+    private int chance;
 
     /**
      * Constructor.
@@ -14,6 +21,15 @@ public class GoldPot extends Item implements Consumable {
      */
     public GoldPot() {
         super("Pot of Gold", '$', true);
+        this.price = 500;
+        this.chance = 25;
+        this.addCapability(Sellable.SELLABLE);
+    }
+    public GoldPot(int price, int chance) {
+        super("Pot of Gold", '$', true);
+        this.price = price;
+        this.chance = chance;
+        this.addCapability(Sellable.SELLABLE);
     }
 
     /**
@@ -38,4 +54,20 @@ public class GoldPot extends Item implements Consumable {
         return new ActionList(new ConsumeAction(this));
     }
 
+    @Override
+    public int getPrice() {
+        int percentage = new Random().nextInt(100);
+
+        if (percentage < this.chance){
+            this.price = 0;
+        }
+
+        return this.price;
+    }
+
+    @Override
+    public void sellItem(Actor actor) {
+        actor.addBalance(this.price);
+        actor.removeItemFromInventory(this);
+    }
 }

@@ -6,19 +6,31 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.enums.Sellable;
 import game.enums.Status;
 import game.actions.AttackAction;
+
+import java.util.Random;
 
 /**
  * Class representing the Metal Pipe Scrap Item, which can be used as a Weapon.
  */
-public class MetalPipe extends Item implements Weapon {
+public class MetalPipe extends Item implements Weapon, SellableItem {
+
+    private int price;
 
     /**
      * Constructor for the Metal Pipe.
      */
     public MetalPipe() {
         super("Metal Pipe", '!', true);
+        this.price = 35;
+        this.addCapability(Sellable.SELLABLE);
+    }
+    public MetalPipe(int price) {
+        super("Metal Pipe", '!', true);
+        this.price = price;
+        this.addCapability(Sellable.SELLABLE);
     }
 
     /**
@@ -86,5 +98,16 @@ public class MetalPipe extends Item implements Weapon {
     @Override
     public int chanceToHit() {
         return 20;
+    }
+
+    @Override
+    public int getPrice() {
+        return this.price;
+    }
+
+    @Override
+    public void sellItem(Actor actor) {
+        actor.addBalance(this.price);
+        actor.removeItemFromInventory(this);
     }
 }
