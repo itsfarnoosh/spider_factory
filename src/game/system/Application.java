@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.GroundFactory;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.traders.HumanoidFigure;
 import game.actors.Player;
@@ -24,9 +25,7 @@ import game.items.sellables.MetalPipe;
 import game.items.sellables.MetalSheet;
 import game.items.sellables.ToiletPaper;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * The main class to start the game.
@@ -169,6 +168,15 @@ public class Application {
         itemPrinters.add(new AstleyPrinter());
         itemPrinters.add(new TheseusPrinter()); // Add TheseusPrinter to the list
 
+        // *Tedd's version*
+//        Map<GameMap, String> mapss = new HashMap<GameMap, String>();
+//        maps.put(gameMap, "Factory");
+//        maps.put(moonMap, "New Moon");
+//        maps.put(parkingLotMap, "Parking Lot");
+//
+//        ComputerTerminal terminal = new ComputerTerminal(itemPrinters, mapss);
+//        gameMap.at(16, 6).setGround(terminal);
+
 
         // Add computer terminal with travel actions to the main game map
         ComputerTerminal computerTerminalMainMap = new ComputerTerminal(itemPrinters, gameMap, moonMap);
@@ -181,7 +189,7 @@ public class Application {
 
         parkingLotMap.at(3, 8).addActor(new HumanoidFigure());
         // for testing
-        gameMap.at(15, 8).addActor(new HumanoidFigure()); // checked
+//        gameMap.at(15, 8).addActor(new HumanoidFigure()); // checked
 
 
         // Run the game

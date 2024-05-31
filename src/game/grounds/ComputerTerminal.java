@@ -12,6 +12,8 @@ import game.actions.TravelAction;
 import game.items.printers.Printer;
 
 import java.util.ArrayList;
+import java.util.Map;
+
 /**
  * A computer terminal that allows the actor to purchase items and travel to different maps.
  */
@@ -19,6 +21,9 @@ public class ComputerTerminal extends Ground {
     private ArrayList<Printer> itemPrinters;
     private GameMap factoryMap;
     private GameMap moonMap;
+    private GameMap parkingLot;
+
+    private Map<GameMap, String> maps;
     /**
      * Constructor for the ComputerTerminal.
      *
@@ -26,13 +31,21 @@ public class ComputerTerminal extends Ground {
      * @param factoryMap   The map representing the factory.
      * @param moonMap      The map representing the new moon.
      */
+
     public ComputerTerminal(ArrayList<Printer> itemPrinters, GameMap factoryMap, GameMap moonMap) {
         super('=');
         this.itemPrinters = itemPrinters;
         this.factoryMap = factoryMap;
         this.moonMap = moonMap;
-
     }
+
+    // *Ted's version*
+    public ComputerTerminal(ArrayList<Printer> itemPrinters, Map<GameMap, String> maps) {
+        super('=');
+        this.itemPrinters = itemPrinters;
+        this.maps = maps;
+    }
+
     /**
      * Returns a list of allowable actions for this ground.
      * In this case, it provides actions to purchase items and travel to different maps.
@@ -53,10 +66,23 @@ public class ComputerTerminal extends Ground {
 
         // Add travel actions based on the current map
         if (location.map() == factoryMap) {
-            actions.add(new TravelAction(moonMap.at(1, 1), "New Moon"));
+            actions.add(new TravelAction(moonMap.at(15, 6), "New Moon"));
+            actions.add(new TravelAction(parkingLot.at(3, 8), "Parking Lot"));
+
         } else if (location.map() == moonMap) {
-            actions.add(new TravelAction(factoryMap.at(1, 1), "Factory"));
+            actions.add(new TravelAction(factoryMap.at(15, 6), "Factory"));
+            actions.add(new TravelAction(parkingLot.at(3, 8), "Parking Lot"));
+        } else if (location.map() == parkingLot) {
+            actions.add(new TravelAction(factoryMap.at(15, 6), "Factory"));
+            actions.add(new TravelAction(moonMap.at(3, 8), "Parking Lot"));
         }
+
+        // *Ted's version*
+//        for (GameMap map: maps.keySet()){
+//            if (map != location.map()){
+//                actions.add(new TravelAction(map.at(3, 8), maps.get(map)));
+//            }
+//        }
 
         return actions;
     }
