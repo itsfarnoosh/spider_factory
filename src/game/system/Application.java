@@ -6,21 +6,23 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actors.HumanoidFigure;
+import game.actors.Traders.HumanoidFigure;
 import game.actors.Player;
 import game.actors.enemies.AlienBug;
 import game.actors.enemies.HuntsmanSpider;
 import game.actors.enemies.SuspiciousAstronaut;
-import game.enums.Ability;
-import game.enums.Status;
 import game.grounds.*;
 import game.grounds.trees.Inheritree;
 import game.grounds.trees.SproutState;
 import game.items.*;
-import game.items.consumables.EnergyDrinkPrinter;
-import game.items.consumables.GoldPot;
 import game.items.consumables.LargeFruit;
+import game.items.printers.*;
+import game.items.consumables.GoldPot;
 import game.items.consumables.PickleJar;
+import game.items.sellables.LargeBolt;
+import game.items.sellables.MetalPipe;
+import game.items.sellables.MetalSheet;
+import game.items.sellables.ToiletPaper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,17 +110,16 @@ public class Application {
         // Add actors and items to the main game map
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
         Player player = new Player("Intern", '@', 4);
+        player.addBalance(10000);
         // test selling items.
-//        player.addItemToInventory(new DragonSlayer()); checked
-//        player.addItemToInventory(new LargeBolt());  checked
-//        player.addItemToInventory(new MetalSheet()); checked
-//        player.addItemToInventory(new LargeFruit()); checked
-//        player.addItemToInventory(new PickleJar()); checked
-//        player.addItemToInventory(new MetalPipe()); checked
-//        player.addItemToInventory(new GoldPot()); checked
-//        player.addItemToInventory(new ToiletPaper()); checked
-
-
+//        player.addItemToInventory(new DragonSlayer()); // checked
+//        player.addItemToInventory(new LargeBolt()); // checked
+//        player.addItemToInventory(new MetalSheet()); // checked
+//        player.addItemToInventory(new LargeFruit()); // checked
+//        player.addItemToInventory(new PickleJar()); // checked
+//        player.addItemToInventory(new MetalPipe()); // checked
+//        player.addItemToInventory(new GoldPot()); // checked
+//        player.addItemToInventory(new ToiletPaper()); // checked
 
 
         world.addPlayer(player, gameMap.at(15, 6));
