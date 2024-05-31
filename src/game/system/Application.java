@@ -170,9 +170,9 @@ public class Application {
 
         // *Tedd's version*
 //        Map<GameMap, String> mapss = new HashMap<GameMap, String>();
-//        maps.put(gameMap, "Factory");
-//        maps.put(moonMap, "New Moon");
-//        maps.put(parkingLotMap, "Parking Lot");
+//        mapss.put(gameMap, "Factory");
+//        mapss.put(moonMap, "New Moon");
+//        mapss.put(parkingLotMap, "Parking Lot");
 //
 //        ComputerTerminal terminal = new ComputerTerminal(itemPrinters, mapss);
 //        gameMap.at(16, 6).setGround(terminal);
