@@ -1,4 +1,4 @@
-package game.actors.Traders;
+package game.actors.traders;
 
 public class HumanoidFigure extends TraderActor {
     // make hitpoint = 1 as the humanoid cannot be attack by other living things.

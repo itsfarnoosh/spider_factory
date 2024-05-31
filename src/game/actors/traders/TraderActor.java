@@ -1,4 +1,4 @@
-package game.actors.Traders;
+package game.actors.traders;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
