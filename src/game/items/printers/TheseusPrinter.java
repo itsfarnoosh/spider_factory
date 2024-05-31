@@ -1,8 +1,8 @@
-package game.items;
+package game.items.printers;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.items.Theseus;
 
-import java.util.Random;
 
 public class TheseusPrinter implements Printer {
     private final Theseus item = new Theseus();

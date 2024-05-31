@@ -1,6 +1,8 @@
-package game.items;
+package game.items.printers;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.items.Astley;
+
 /**
  * A Printer for creating Astley items.
  */

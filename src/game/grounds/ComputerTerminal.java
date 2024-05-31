@@ -2,7 +2,6 @@
 
 package game.grounds;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
@@ -10,8 +9,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PurchaseAction;
 import game.actions.TravelAction;
-import game.items.Printer;
-import game.items.TheseusPrinter;
+import game.items.printers.Printer;
 
 import java.util.ArrayList;
 /**

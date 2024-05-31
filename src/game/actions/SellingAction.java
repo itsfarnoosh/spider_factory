@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.SellableItem;
+import game.items.sellables.SellableItem;
 
 import static edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes.HEALTH;
 
@@ -20,12 +20,18 @@ public class SellingAction extends Action {
         this.cost = item.getPrice();
     }
 
+    public SellingAction(Actor buyer, SellableItem item){
+        this.buyer = buyer;
+        this.item = item;
+        this.cost = item.getPrice();
+    }
+
     public String execute(Actor actor, GameMap map){
-        String result = "The intern sold the " + this.item + " for $" + this.cost + ".";
-        item.sellItem(this.seller);
-        if (this.seller.getAttribute(HEALTH) == 0){
-            result = "The " + this.seller + " is instantly killed by " + this.buyer + ".";
-            this.seller.unconscious(actor, map);
+        String result = actor + " sold the " + this.item + " for $" + this.cost + ".";
+        item.sellItem(actor);
+        if (actor.getAttribute(HEALTH) == 0){
+            result = "The " + actor + " is instantly killed by " + this.buyer + ".";
+            actor.unconscious(actor, map);
         }
         return result;
     }

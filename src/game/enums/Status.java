@@ -9,5 +9,5 @@ package game.enums;
 public enum Status {
     HOSTILE_TO_ENEMY,
     ENEMY,
-    NEUTRAL
+    TRADER
 }

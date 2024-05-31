@@ -1,35 +1,40 @@
-package game.items;
+package game.items.printers;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.items.consumables.EnergyDrink;
 
 import java.util.Random;
 
-public class ToiletPaperPrinter implements Printer {
-    private final ToiletPaper item = new ToiletPaper();
+public class EnergyDrinkPrinter implements Printer {
+
+    private final int healingPoints = 1;
+    private final EnergyDrink item = new EnergyDrink(healingPoints);
     private int credit;
-    private int successChance; // chance of intern paying 1 credit
+
+    private final int successChance; // chance of intern paying double
 
     /**
      * Constructor
      *
+
      */
-    public ToiletPaperPrinter(){
-        this.credit = 5;
-        this.successChance = 75;
+    public EnergyDrinkPrinter(){
+        this.credit = 10;
+        this.successChance = 20;
     }
 
     /**
-     * Provide the item (the toilet paper)
+     * Provide the item (the energy drink)
      *
-     * @return defensive copy of toilet paper.
+     * @return defensive copy of the item (drink)
      */
     public Item getItem() {
-        return new ToiletPaper();
+        return new EnergyDrink(healingPoints);
     }
 
     /**
-     * Process the price for the toilet paper.
-     * if the chance is met, the price will be deducted to 1.
+     * Process the price for the energy drink.
+     * if the chance is met, the price will be double.
      *
      * @return the price in integer for the energy drink
      */
@@ -37,7 +42,7 @@ public class ToiletPaperPrinter implements Printer {
         int percentage = new Random().nextInt(100);
 
         if (percentage < this.successChance){
-            this.credit = 1;
+            credit = credit * 2;
         }
         return credit;
     }
@@ -51,6 +56,7 @@ public class ToiletPaperPrinter implements Printer {
         return true;
     }
 
+
     /**
      * provide the name of product
      *
@@ -58,6 +64,6 @@ public class ToiletPaperPrinter implements Printer {
      */
     @Override
     public String toString() {
-        return "Toilet Paper";
+        return "Energy Drink";
     }
 }

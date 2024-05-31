@@ -2,36 +2,25 @@ package game.items.consumables;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
-import game.enums.Sellable;
-import game.items.SellableItem;
+import game.items.sellables.SellableScrap;
 
 import java.util.Random;
 
-public class PickleJar extends Item implements Consumable, SellableItem {
+public class PickleJar extends SellableScrap implements Consumable{
     private final int HURT_POINTS = 1;
     private final int HEAL_POINTS = 1;
     private final double EXPIRY_CHANCE = 0.5;
-
-    private int price;
-    private int chance;
 
     /**
      * Constructor
      *
      */
     public PickleJar() {
-        super("Jar of Pickles", 'n', true);
-        this.price = 25;
-        this.chance = 50;
-        this.addCapability(Sellable.SELLABLE);
+        super("Jar of Pickles", 'n', true, 25, 50);
     }
     public PickleJar(int price, int chance) {
-        super("Jar of Pickles", 'n', true);
-        this.price = price;
-        this.chance = chance;
-        this.addCapability(Sellable.SELLABLE);
+        super("Jar of Pickles", 'n', true, price, chance);
     }
 
     /**
@@ -79,16 +68,10 @@ public class PickleJar extends Item implements Consumable, SellableItem {
     public int getPrice() {
         int percentage = new Random().nextInt(100);
 
-        if (percentage < this.chance){
-            this.price = 50;
+        if (percentage < super.getChance()){
+            super.setPrice(50);
         }
 
-        return this.price;
-    }
-
-    @Override
-    public void sellItem(Actor actor) {
-        actor.addBalance(this.price);
-        actor.removeItemFromInventory(this);
+        return super.getPrice();
     }
 }
