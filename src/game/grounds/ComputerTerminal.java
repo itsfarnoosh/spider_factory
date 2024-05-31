@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.NumberRange;
 import game.actions.PurchaseAction;
 import game.actions.TravelAction;
 import game.items.printers.Printer;
@@ -80,7 +81,9 @@ public class ComputerTerminal extends Ground {
         // *Ted's version*
 //        for (GameMap map: maps.keySet()){
 //            if (map != location.map()){
-//                actions.add(new TravelAction(map.at(3, 8), maps.get(map)));
+//                int x = map.getXRange().max() / 2;
+//                int y = map.getYRange().max()/ 2;
+//                actions.add(new TravelAction(map.at(x, y - 1), maps.get(map)));
 //            }
 //        }
 

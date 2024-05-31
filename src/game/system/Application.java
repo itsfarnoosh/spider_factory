@@ -176,6 +176,8 @@ public class Application {
 //
 //        ComputerTerminal terminal = new ComputerTerminal(itemPrinters, mapss);
 //        gameMap.at(16, 6).setGround(terminal);
+//        moonMap.at(16, 6).setGround(terminal);
+//        parkingLotMap.at(3, 4).setGround(terminal);
 
 
         // Add computer terminal with travel actions to the main game map
