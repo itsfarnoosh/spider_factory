@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.GroundFactory;
 import edu.monash.fit2099.engine.positions.World;
+import game.InternTeleportLocation;
+import game.TeleportLocation;
 import game.actors.traders.HumanoidFigure;
 import game.actors.Player;
 import game.actors.enemies.AlienBug;
@@ -169,15 +171,15 @@ public class Application {
         itemPrinters.add(new TheseusPrinter()); // Add TheseusPrinter to the list
 
         // *Tedd's version*
-//        Map<GameMap, String> mapss = new HashMap<GameMap, String>();
-//        mapss.put(gameMap, "Factory");
-//        mapss.put(moonMap, "New Moon");
-//        mapss.put(parkingLotMap, "Parking Lot");
+//        Map<GameMap, TeleportLocation> mapss = new HashMap<GameMap, TeleportLocation>();
+//        mapss.put(gameMap, new InternTeleportLocation("Factory", 15, 6));
+//        mapss.put(moonMap, new InternTeleportLocation("New Moon", 15, 6));
+//        mapss.put(parkingLotMap, new InternTeleportLocation("Parking Lot", 3, 3));
 //
 //        ComputerTerminal terminal = new ComputerTerminal(itemPrinters, mapss);
 //        gameMap.at(16, 6).setGround(terminal);
 //        moonMap.at(16, 6).setGround(terminal);
-//        parkingLotMap.at(3, 4).setGround(terminal);
+//        parkingLotMap.at(4, 3).setGround(terminal);
 
 
         // Add computer terminal with travel actions to the main game map

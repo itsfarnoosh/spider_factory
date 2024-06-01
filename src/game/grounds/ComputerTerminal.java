@@ -8,6 +8,8 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.NumberRange;
+import game.InternTeleportLocation;
+import game.TeleportLocation;
 import game.actions.PurchaseAction;
 import game.actions.TravelAction;
 import game.items.printers.Printer;
@@ -23,8 +25,7 @@ public class ComputerTerminal extends Ground {
     private GameMap factoryMap;
     private GameMap moonMap;
     private GameMap parkingLot;
-
-    private Map<GameMap, String> maps;
+    private Map<GameMap, TeleportLocation> maps;
     /**
      * Constructor for the ComputerTerminal.
      *
@@ -41,7 +42,7 @@ public class ComputerTerminal extends Ground {
     }
 
     // *Ted's version*
-    public ComputerTerminal(ArrayList<Printer> itemPrinters, Map<GameMap, String> maps) {
+    public ComputerTerminal(ArrayList<Printer> itemPrinters, Map<GameMap, TeleportLocation> maps) {
         super('=');
         this.itemPrinters = itemPrinters;
         this.maps = maps;
@@ -81,9 +82,11 @@ public class ComputerTerminal extends Ground {
         // *Ted's version*
 //        for (GameMap map: maps.keySet()){
 //            if (map != location.map()){
-//                int x = map.getXRange().max() / 2;
-//                int y = map.getYRange().max()/ 2;
-//                actions.add(new TravelAction(map.at(x, y - 1), maps.get(map)));
+//                TeleportLocation internLocation = maps.get(map);
+//                String mapName = internLocation.getMoonName();
+//                int x = internLocation.getXCoordinate();
+//                int y = internLocation.getYCoordinate();
+//                actions.add(new TravelAction(map.at(x, y), mapName));
 //            }
 //        }
 
