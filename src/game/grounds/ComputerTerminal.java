@@ -7,8 +7,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.NumberRange;
-import game.InternTeleportLocation;
 import game.TeleportLocation;
 import game.actions.PurchaseAction;
 import game.actions.TravelAction;
@@ -80,12 +78,17 @@ public class ComputerTerminal extends Ground {
         }
 
         // *Ted's version*
+//        // loop for the given map from application.
 //        for (GameMap map: maps.keySet()){
+//            // if current map isn't the same as map
 //            if (map != location.map()){
+//                // get the TeleportLocation object.
 //                TeleportLocation internLocation = maps.get(map);
+//                // obtain the map's name and appropriate x and y coordinate for intern to teleport to.
 //                String mapName = internLocation.getMoonName();
 //                int x = internLocation.getXCoordinate();
 //                int y = internLocation.getYCoordinate();
+//                // generate TravelAction with the obtained x, y, and map's name.
 //                actions.add(new TravelAction(map.at(x, y), mapName));
 //            }
 //        }
