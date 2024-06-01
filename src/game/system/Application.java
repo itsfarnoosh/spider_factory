@@ -183,11 +183,11 @@ public class Application {
 
 
         // Add computer terminal with travel actions to the main game map
-        ComputerTerminal computerTerminalMainMap = new ComputerTerminal(itemPrinters, gameMap, moonMap);
+        ComputerTerminal computerTerminalMainMap = new ComputerTerminal(itemPrinters, gameMap, moonMap, parkingLotMap);
         gameMap.at(14, 9).setGround(computerTerminalMainMap);
 
         // Add computer terminal with travel actions to the moon map
-        ComputerTerminal computerTerminalMoonMap = new ComputerTerminal(itemPrinters, gameMap, moonMap);
+        ComputerTerminal computerTerminalMoonMap = new ComputerTerminal(itemPrinters, gameMap, moonMap, parkingLotMap);
         moonMap.at(5, 5).setGround(computerTerminalMoonMap); // Placing the terminal at (5, 5) on the moon map
 
 

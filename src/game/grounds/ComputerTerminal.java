@@ -32,11 +32,12 @@ public class ComputerTerminal extends Ground {
      * @param moonMap      The map representing the new moon.
      */
 
-    public ComputerTerminal(ArrayList<Printer> itemPrinters, GameMap factoryMap, GameMap moonMap) {
+    public ComputerTerminal(ArrayList<Printer> itemPrinters, GameMap factoryMap, GameMap moonMap, GameMap parkingLot) {
         super('=');
         this.itemPrinters = itemPrinters;
         this.factoryMap = factoryMap;
         this.moonMap = moonMap;
+        this.parkingLot = parkingLot;
     }
 
     // *Ted's version*
