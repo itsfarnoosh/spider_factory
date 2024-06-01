@@ -111,13 +111,13 @@ public class Application {
         player.addBalance(10000);
         // test selling items.
 //        player.addItemToInventory(new DragonSlayer()); // checked
-        player.addItemToInventory(new LargeBolt()); // checked
+//        player.addItemToInventory(new LargeBolt()); // checked
 //        player.addItemToInventory(new MetalSheet()); // checked
-        player.addItemToInventory(new LargeFruit()); // checked
+//        player.addItemToInventory(new LargeFruit()); // checked
 //        player.addItemToInventory(new PickleJar()); // checked
-        player.addItemToInventory(new MetalPipe()); // checked
+//        player.addItemToInventory(new MetalPipe()); // checked
 //        player.addItemToInventory(new GoldPot()); // checked
-        player.addItemToInventory(new ToiletPaper()); // checked
+//        player.addItemToInventory(new ToiletPaper()); // checked
 
 
         world.addPlayer(player, gameMap.at(15, 6));
@@ -190,7 +190,7 @@ public class Application {
 
         parkingLotMap.at(3, 8).addActor(new HumanoidFigure());
         // for testing
-        gameMap.at(15, 8).addActor(new HumanoidFigure()); // checked
+//        gameMap.at(15, 8).addActor(new HumanoidFigure()); // checked
 
 
         // Run the game
