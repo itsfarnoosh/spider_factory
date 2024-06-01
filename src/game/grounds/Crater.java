@@ -18,6 +18,7 @@ public class Crater extends Ground {
      */
     public Crater() {
         super('u');
+
     }
 
     /**
