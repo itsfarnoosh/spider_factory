@@ -21,6 +21,12 @@ public class MetalPipe extends SellableScrap implements Weapon {
     public MetalPipe() {
         super("Metal Pipe", '!', true, 35);
     }
+
+    /***
+     * Non-default Constructor.
+     *
+     * @param price of the item
+     */
     public MetalPipe(int price) {
         super("Metal Pipe", '!', true, price);
     }

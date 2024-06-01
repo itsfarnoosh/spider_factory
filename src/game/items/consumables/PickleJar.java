@@ -19,6 +19,13 @@ public class PickleJar extends SellableScrap implements Consumable{
     public PickleJar() {
         super("Jar of Pickles", 'n', true, 25, 50);
     }
+
+    /***
+     * Non-default Constructor.
+     *
+     * @param price price of the item
+     * @param chance chance for the item to trigger its special affects
+     */
     public PickleJar(int price, int chance) {
         super("Jar of Pickles", 'n', true, price, chance);
     }
@@ -64,8 +71,15 @@ public class PickleJar extends SellableScrap implements Consumable{
         return new ActionList(new ConsumeAction(this));
     }
 
+    /**
+     * Calculate whether the item's chance will be met.
+     * If item's chance is met, change the price to 50.
+     * if not, the price remains the same as the original (25)
+     *
+     * @return The calculated/appropriate price in for the item based on the item's chance.
+     */
     @Override
-    public int getPrice() {
+    public int getSellingPrice() {
         int percentage = new Random().nextInt(100);
 
         if (percentage < super.getChance()){

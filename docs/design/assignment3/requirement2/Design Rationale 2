@@ -7,17 +7,18 @@ These following classes were created to assist and developed previous code to ma
 
   SellableItem interface:
   All the items that are sellable must implement the SellableItem interface. This class has important methods such as
-  getPrice() and sellItem(Actor actor) which would allow any items to perform essential processes but also reduce
-  redundant due to interface's re-usability as certain item have varied percentage and effects when being purchase by the
-  humanoid figure. Each sellable item's getPrice() will simply provide the price of the item if the item doesn't have
-  attribute chance. If the item has chance/promotion that associates with the item price, then the item's getPrice()
-  method will calculate whether the chance/promotion is met, if so, chance the price, if not, the price remains the
-  same. In terms of toilet paper where intern will instantly by kill by Humanoid figure if chance is met, the
-  implementation of hurting player is instead implement in sellItem() method. Initially, this implementation was
-  implemented in getPrice() but due to the main responsibility of getPrice() method being to deal with item's price,
-  eliminating the intern shouldn't be related to this method at all but instead should be implement Whilst the item is
-  being sold which occurs in sellItem() method where it has a responsibility in dealing with essential process of
-  selling the item by removing and adding intern's balance when an item is sold.
+  getPrice(), getSellingPrice() and sellItem(Actor actor) which would allow any items to perform essential processes
+  but also reduce redundant due to interface's re-usability as certain item may have varied percentage and effects when
+  being purchase by the humanoid figure. Each sellable item's getPrice() will simply provide the price of the item. If
+  the item doesn't have attribute chance, getSellingItem() will also work the same as getPrice(). If the item has chance
+  /promotion that associates with the item price, then the item's getSellingPrice() method will calculate whether the
+  chance/promotion is met, if so, change the price, if not, the price remains the same. In terms of toilet paper where
+  intern will instantly be kill by Humanoid figure if chance is met, the implementation of hurting player is instead
+  implement in sellItem() method. Initially, this implementation was implemented in getSellingPrice() but due to the
+  main responsibility of getSellingPrice() method being to deal with item's price, eliminating the intern shouldn't be
+  related to this method at all but instead should be implement Whilst the item is being sold which occurs in sellItem()
+  method where it has a responsibility in dealing with essential process of selling the item by removing and adding
+  intern's balance when an item is sold.
 
   SellableScrap:
   Is an extends of Item with additional attributes (price, and chance of the item) and implement of SellableItem
@@ -58,9 +59,10 @@ These following classes were created to assist and developed previous code to ma
   Technically this would also be action of down-casting as Item isn't directly implementing SellableItem interface
   (as we are unable to modify class from engine) but the sub-class of the Item class does. Down-casting is require in
   this case as it will allow the sellable item that was initially declared as Item to utilise essential methods such as
-  getPrice() and sellItem(Actor actor). By doing this, the item will be compatible with SellingAction class as they're
-  able to use their SellableItem methods. Afterwards, the newly changed SellableItem object will get pass into
-  SellingAction's constructor parameter which is created everytime a sellable item is found in intern's inventory.
+  getPrice(), getSellingPrice(), and sellItem(Actor actor). By doing this, the item will be compatible with
+  SellingAction class as they're able to use their SellableItem methods. Afterwards, the newly changed SellableItem
+  object will get pass into SellingAction's constructor parameter which is created everytime a sellable item is found
+  in intern's inventory.
 
   **
    Initially i didn't think interface casting would also be consider as down-casting in this scenario but I WAS DEAD
@@ -103,8 +105,8 @@ DRY:
 SRP:
 - each newly created class mainly has single own responsibility:
   e.g. - Humanoid figure: triggers selling actions for sellable item
-       - SellableItem interface: provide getPrice() and sellItem(Actor actor) methods for sellable items to be able to
-         provide appropriate price and sell for a particular item for buyer (Humanoid figure).
+       - SellableItem interface: provide getPrice(), getSellingPrice(), and sellItem(Actor actor) methods for sellable
+         items to be able to provide appropriate price and sell for a particular item for buyer (Humanoid figure).
        - TRADER enum: allow the actor to be recognise as trader.
        - TraderActor: Allow its object/actor to not be attack by any actor and recognised as trader.
        - SellingAction: Provoke selling process by activating SellableScrap/SellableItem object's sellItem(Actor actor)
@@ -129,8 +131,8 @@ LIP:
 
 ISP:
 - All the newly created class is fully utilising and isn't being force to rely on interface class.
-- e.g. all the sellable item are require to utilising both getPrice() and sellItem(Actor actor) from SellingItem
-       interface.
+- e.g. all the sellable item are require to utilising both getPrice(), getSellingPrice() and sellItem(Actor actor) from
+       SellingItem interface.
 
 DIP:
 - High-level class isn't directly relying on low-level clas but through interface.

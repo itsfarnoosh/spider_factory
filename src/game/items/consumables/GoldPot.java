@@ -17,7 +17,15 @@ public class GoldPot extends SellableScrap implements Consumable {
     public GoldPot() {
         super("Pot of Gold", '$', true, 500, 25);
     }
+
+    /***
+     * Non-default Constructor.
+     *
+     * @param price price of the item
+     * @param chance chance for the item to trigger its special affects
+     */
     public GoldPot(int price, int chance) {
+
         super("Pot of Gold", '$', true, price, chance);
     }
 
@@ -43,14 +51,27 @@ public class GoldPot extends SellableScrap implements Consumable {
         return new ActionList(new ConsumeAction(this));
     }
 
+    /**
+     * Calculate whether the item's chance will be met.
+     * If item's chance is met, change the price to 0.
+     * if not, the price remains the same as the original (500)
+     *
+     * @return The calculated/appropriate price in for the item based on the item's chance.
+     */
     @Override
-    public int getPrice() {
+    public int getSellingPrice() {
+        // generate a number between 0 - 99.
         int percentage = new Random().nextInt(100);
 
+        // if the generated number/percentage is less than the chance of the item.
+        // e.g. chance is 50, then any number that is 49 or less consider a success.
+        // This is because the generated number/percentage is between 0 - 99 not 0 - 100.
+        // Thus, < instead of <= in the if condition.
         if (percentage < super.getChance()){
+            // change the price of the item.
             super.setPrice(0);
         }
-
+        // return the item's price.
         return super.getPrice();
     }
 }

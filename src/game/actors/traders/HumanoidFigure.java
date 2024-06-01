@@ -1,35 +1,31 @@
 package game.actors.traders;
 
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
+import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.GameMap;
+
 public class HumanoidFigure extends TraderActor {
-    // make hitpoint = 1 as the humanoid cannot be attack by other living things.
-    // This is due to the fact that this actor doesn't have any capability/status.
+
+    /***
+     * Constructor.
+     */
     public HumanoidFigure(){
         super("Humanoid figure", 'H', 1);
     }
 
-//    @Override
-//    public ActionList allowableActions(Actor otherActor, String direction, GameMap map){
-//        ActionList actions = new ActionList();
-//        // get all the player's item within their inventory.
-//        List<Item> items = otherActor.getItemInventory();
-//        // loop for each item
-//        for (Item item: items) {
-//            // if the Item is sellable.
-//            // prevent occurrence of errors if the item doesn't implement SellableItem interface/isn't sellable.
-//            if (item.hasCapability(Sellable.SELLABLE)){
-//                // Change item's declaration to SellableItem through the use of interface cast.
-//                // Technically not downcasting... right?
-//                SellableItem sellableScrap = (SellableItem) item;
-//                // create a choice for the player to be able to sell each item if it is sellable.
-//                actions.add(new SellingAction(this, otherActor, sellableScrap));
-//            }
-//        }
-//
-//        return actions;
-//    }
-
+    /**
+     * Action for humanoid figure to perform in each turn (which is nothing).
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return DoNothingAction as Humanoid Figure is part of the factory an doesn't move.
+     */
     @Override
-    public String toString() {
-        return super.toString();
+    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        return new DoNothingAction();
     }
 }
