@@ -68,14 +68,14 @@ public class ComputerTerminal extends Ground {
         // Add travel actions based on the current map
         if (location.map() == factoryMap) {
             actions.add(new TravelAction(moonMap.at(15, 6), "New Moon"));
-            actions.add(new TravelAction(parkingLot.at(3, 8), "Parking Lot"));
+            actions.add(new TravelAction(parkingLot.at(3, 3), "Parking Lot"));
 
         } else if (location.map() == moonMap) {
             actions.add(new TravelAction(factoryMap.at(15, 6), "Factory"));
-            actions.add(new TravelAction(parkingLot.at(3, 8), "Parking Lot"));
+            actions.add(new TravelAction(parkingLot.at(3, 3), "Parking Lot"));
         } else if (location.map() == parkingLot) {
             actions.add(new TravelAction(factoryMap.at(15, 6), "Factory"));
-            actions.add(new TravelAction(moonMap.at(3, 8), "Parking Lot"));
+            actions.add(new TravelAction(moonMap.at(3, 3), "Parking Lot"));
         }
 
         // *Ted's version*
