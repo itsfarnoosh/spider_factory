@@ -9,7 +9,6 @@ import static edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes.HE
 
 public class SellingAction extends Action {
     private Actor buyer;
-    private Actor seller;
     private SellableItem item;
     private int cost;
 

@@ -150,7 +150,17 @@ Smells:
                         in the constructor of the newly created classes.
 
 Connascence:
--
+- CoN: In majority of the classes in requirement 2, many class class such as SellableScraps and sellable items that
+       implement interface must have their methods with exact name and parameter. Due to this, any typo or changed to
+       the name of interface's methods will also result in changes in the classes that implements it.
+- CoT: Similar to the above's principle example, SellableItem's sellItem(Actor actor) method require an Actor object as
+       its parameter, this means that sellableScraps and Items that implements SellableItem' sellItem(Actor actor)
+       must accept Actor or its sub-classes and return nothing (void).
+- CoM: Luckily, each classes' methods has clear responsibility and usually doesn't change.
+- CoP: Any swap of order in any classes' constructor's parameter will result in changes to other classes' constructor
+       that extends them.
+- CoA: In getSellingItem() of sellable items that has different price to change to when their chance meets will need
+       their getSellingItem() override to allow them to change their price if their chance is meet.
 
 Pros:
 - Maintainable due to each class having single responsibility.
