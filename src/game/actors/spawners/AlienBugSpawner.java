@@ -1,17 +1,17 @@
-package game.spawners;
+package game.actors.spawners;
 
+import game.actors.enemies.AlienBug;
 import game.actors.enemies.Enemy;
-import game.actors.enemies.HuntsmanSpider;
 
-public class HuntsmanSpiderSpawner implements Spawner {
+public class AlienBugSpawner implements Spawner {
     @Override
     public Enemy spawn() {
-        return new HuntsmanSpider();
+        return new AlienBug();
     }
 
     @Override
     public boolean hasChance() {
-        double spawnChance = new HuntsmanSpider().getSpawnChance();
+        double spawnChance = new AlienBug().getSpawnChance();
         if (spawnChance > Math.random()){
             return true;
         }

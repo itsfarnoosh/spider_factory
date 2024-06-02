@@ -18,9 +18,9 @@ import game.items.printers.*;
 import game.items.consumables.GoldPot;
 import game.items.consumables.PickleJar;
 import game.items.sellables.*;
-import game.spawners.AlienBugSpawner;
-import game.spawners.HuntsmanSpiderSpawner;
-import game.spawners.SuspiciousAstronautSpawner;
+import game.actors.spawners.AlienBugSpawner;
+import game.actors.spawners.HuntsmanSpiderSpawner;
+import game.actors.spawners.SuspiciousAstronautSpawner;
 
 import java.util.*;
 

@@ -2,7 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.spawners.Spawner;
+import game.actors.spawners.Spawner;
 import game.actors.enemies.Enemy;
 
 import java.util.Random;
