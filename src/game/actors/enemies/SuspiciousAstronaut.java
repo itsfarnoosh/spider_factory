@@ -4,19 +4,26 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Behaviour;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.enums.Monster;
-
-import static edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes.HEALTH;
 
 
 //Suspicious Astronaut kills the intern
 //Suspicious Astronaut wander around
 //Suspicious Astronaut cannot enter the Intern’s spaceship ***
 public class SuspiciousAstronaut extends Enemy {
+    /**
+     * SpawnFactory constructor to create an SuspiciousAstronaut instance.
+     * Returns a new SuspiciousAstronaut instance to be used in when instantiating a Crater object
+     */
+    public static SpawnFactory<SuspiciousAstronaut> FACTORY = new SpawnFactory<>() {
+        @Override
+        public SuspiciousAstronaut spawn() {
+            return new SuspiciousAstronaut();
+        }
+    };
     /**
      * Constructor.
      *

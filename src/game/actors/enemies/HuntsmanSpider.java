@@ -14,6 +14,16 @@ import game.behaviours.WanderBehaviour;
 import game.actions.AttackAction;
 
 public class HuntsmanSpider extends Enemy {
+    /**
+     * SpawnFactory constructor to create an HuntsmanSpider instance.
+     * Returns a new HuntsmanSpider instance to be used in when instantiating a Crater object
+     */
+    public static SpawnFactory<HuntsmanSpider> FACTORY = new SpawnFactory<>() {
+        @Override
+        public HuntsmanSpider spawn() {
+            return new HuntsmanSpider();
+        }
+    };
 
     /**
      * Constructor for HuntsmanSpider.

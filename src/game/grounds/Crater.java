@@ -2,7 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actors.spawners.Spawner;
+import game.actors.enemies.SpawnFactory;
 import game.actors.enemies.Enemy;
 
 import java.util.Random;
@@ -10,23 +10,13 @@ import java.util.Random;
 /**
  * Class representing Crater Ground type.
  */
-public class Crater extends Ground {
-    private Spawner spawner;
+public class Crater<Creature extends Enemy> extends Ground {
+    private final SpawnFactory<Creature> spawner;
 
     /**
-     * Constructor for crater, a ground object that can spawn monsters (randomised).
+     * Constructor for crater, a ground object that can spawn specific monsters.
      */
-    public Crater() {
-        super('u');
-
-    }
-
-    /**
-     * Non-default constructor for crater, a ground object that can spawn specific monsters.
-     *
-     * @param spawner an object of enemy for the crater to spawn.
-     */
-    public Crater(Spawner spawner) {
+    public Crater(SpawnFactory<Creature> spawner) {
         super('u');
         this.spawner = spawner;
     }
@@ -40,7 +30,8 @@ public class Crater extends Ground {
     @Override
     public void tick(Location location) {
         Enemy creature = spawner.spawn();
-        if (spawner.hasChance()){
+        double spawnChance = creature.getSpawnChance();
+        if (spawnChance > Math.random()){
             while (true) {
                 int randNum = new Random().nextInt(8);
                 Location spawnLocation = location.getExits().get(randNum).getDestination();

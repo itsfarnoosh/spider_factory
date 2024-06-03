@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.enemies.SuspiciousAstronaut;
 import game.actors.traders.HumanoidFigure;
 import game.actors.Player;
 import game.actors.enemies.AlienBug;
@@ -18,9 +19,6 @@ import game.items.printers.*;
 import game.items.consumables.GoldPot;
 import game.items.consumables.PickleJar;
 import game.items.sellables.*;
-import game.actors.spawners.AlienBugSpawner;
-import game.actors.spawners.HuntsmanSpiderSpawner;
-import game.actors.spawners.SuspiciousAstronautSpawner;
 
 import java.util.*;
 
@@ -138,9 +136,9 @@ public class Application {
         gameMap.at(8, 5).setGround(new Inheritree(new SproutState()));
         gameMap.at(23, 11).setGround(new Inheritree(new SproutState()));
 
-        gameMap.at(21, 3).setGround(new Crater(new AlienBugSpawner()));
-        gameMap.at(3, 4).setGround(new Crater(new HuntsmanSpiderSpawner()));
-        Crater testingCrater = new Crater(new SuspiciousAstronautSpawner());
+        gameMap.at(21, 3).setGround(new Crater<>(AlienBug.FACTORY));
+        gameMap.at(3, 4).setGround(new Crater<>(HuntsmanSpider.FACTORY));
+        Crater<SuspiciousAstronaut> testingCrater = new Crater<>(SuspiciousAstronaut.FACTORY);
         gameMap.at(26, 13).setGround(testingCrater);
 
         gameMap.at(2, 12).addItem(new MetalPipe());

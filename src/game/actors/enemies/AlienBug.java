@@ -38,6 +38,17 @@ public class AlienBug extends Enemy {
     private static final Random random = new Random();
 
     /**
+     * SpawnFactory constructor to create an AlienBug instance.
+     * Returns a new AlienBug instance to be used in when instantiating a Crater object
+     */
+    public static SpawnFactory<AlienBug> FACTORY = new SpawnFactory<>() {
+        @Override
+        public AlienBug spawn() {
+            return new AlienBug();
+        }
+    };
+
+    /**
      * Constructor.
      */
     public AlienBug() {
@@ -49,6 +60,7 @@ public class AlienBug extends Enemy {
         this.spawnChance = 0.1;
 
     }
+
 
     /**
      * Generates a unique name for each Alien Bug instance.
