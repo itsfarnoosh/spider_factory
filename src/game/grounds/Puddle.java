@@ -37,6 +37,13 @@ public class Puddle extends Ground implements Consumable {
         return new ActionList();
     }
 
+    /**
+     * Consumes the puddle, affecting the specified actor.
+     * Increases the actor's maximum health by 1 point.
+     *
+     * @param actor the actor who consumes the puddle.
+     * @return a string describing the result of the consumption.
+     */
     @Override
     public String consume(Actor actor) {
         actor.modifyAttributeMaximum(HEALTH, ActorAttributeOperations.INCREASE, 1);

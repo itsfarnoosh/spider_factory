@@ -14,13 +14,12 @@ public class Crater<Creature extends Enemy> extends Ground {
     private final SpawnFactory<Creature> spawner;
 
     /**
-     * Constructor for crater, a ground object that can spawn specific monsters.
+     * Constructor for crater, a Ground object that can spawn specific monsters.
      */
     public Crater(SpawnFactory<Creature> spawner) {
         super('u');
         this.spawner = spawner;
     }
-
 
     /**
      * The Crater can spawn enemy at each turn.

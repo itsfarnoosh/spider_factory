@@ -14,7 +14,7 @@ import game.enums.Ability;
  * Class representing the Player.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Maily Hoang
  *
  */
 public class Player extends Actor {
