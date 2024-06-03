@@ -156,7 +156,7 @@ public class Application {
         itemPrinters.add(new TheseusPrinter()); // Add TheseusPrinter to the list
 
       
-        Map<GameMap, TeleportLocation> maps = new HashMap<GameMap, TeleportLocation>();
+        Map<GameMap, TeleportLocation> maps = new HashMap<>();
         maps.put(gameMap, new InternTeleportLocation("Polymorphia", 15, 6));
         maps.put(moonMap, new InternTeleportLocation("Refactario", 15, 6));
         maps.put(parkingLotMap, new InternTeleportLocation("Parking Lot", 3, 3));

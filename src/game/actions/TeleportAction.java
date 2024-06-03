@@ -12,15 +12,13 @@ import java.util.Random;
  */
 public class TeleportAction extends Action {
     private Item teleport;
-    private Location teleportLocation;
     /**
      * Constructor for the TeleportAction.
      *
      * @param teleport The item that allows the Actor to teleport.
      */
-    public TeleportAction(Item teleport, Location teleportLocation) {
+    public TeleportAction(Item teleport) {
         this.teleport = teleport;
-        this.teleportLocation = teleportLocation;
     }
 
     /**
