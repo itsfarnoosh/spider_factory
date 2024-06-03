@@ -12,7 +12,7 @@ public class HumanoidFigure extends TraderActor {
      * Constructor.
      */
     public HumanoidFigure(){
-        super("Humanoid figure", 'H', 1);
+        super("Humanoid Figure", 'H', 1);
     }
 
     /**
