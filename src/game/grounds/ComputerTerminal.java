@@ -20,27 +20,15 @@ import java.util.Map;
  */
 public class ComputerTerminal extends Ground {
     private ArrayList<Printer> itemPrinters;
-    private GameMap factoryMap;
-    private GameMap moonMap;
-    private GameMap parkingLot;
     private Map<GameMap, TeleportLocation> maps;
     /**
      * Constructor for the ComputerTerminal.
      *
      * @param itemPrinters A list of item printers available at this terminal.
-     * @param factoryMap   The map representing the factory.
-     * @param moonMap      The map representing the new moon.
+     * @param maps A HashMap of maps to teleport to
      */
 
-    public ComputerTerminal(ArrayList<Printer> itemPrinters, GameMap factoryMap, GameMap moonMap, GameMap parkingLot) {
-        super('=');
-        this.itemPrinters = itemPrinters;
-        this.factoryMap = factoryMap;
-        this.moonMap = moonMap;
-        this.parkingLot = parkingLot;
-    }
 
-    // *Ted's version*
     public ComputerTerminal(ArrayList<Printer> itemPrinters, Map<GameMap, TeleportLocation> maps) {
         super('=');
         this.itemPrinters = itemPrinters;
@@ -65,34 +53,20 @@ public class ComputerTerminal extends Ground {
             actions.add(new PurchaseAction(printer));
         }
 
-        // Add travel actions based on the current map
-        if (location.map() == factoryMap) {
-            actions.add(new TravelAction(moonMap.at(15, 6), "New Moon"));
-            actions.add(new TravelAction(parkingLot.at(3, 3), "Parking Lot"));
-
-        } else if (location.map() == moonMap) {
-            actions.add(new TravelAction(factoryMap.at(15, 6), "Factory"));
-            actions.add(new TravelAction(parkingLot.at(3, 3), "Parking Lot"));
-        } else if (location.map() == parkingLot) {
-            actions.add(new TravelAction(factoryMap.at(15, 6), "Factory"));
-            actions.add(new TravelAction(moonMap.at(3, 3), "Parking Lot"));
+        // loop for the given map from application.
+        for (GameMap map: maps.keySet()){
+            // if current map isn't the same as map
+            if (map != location.map()){
+                // get the TeleportLocation object.
+                TeleportLocation internLocation = maps.get(map);
+                // obtain the map's name and appropriate x and y coordinate for intern to teleport to.
+                String mapName = internLocation.getMoonName();
+                int x = internLocation.getXCoordinate();
+                int y = internLocation.getYCoordinate();
+                // generate TravelAction with the obtained x, y, and map's name.
+                actions.add(new TravelAction(map.at(x, y), mapName));
+            }
         }
-
-        // *Ted's version*
-//        // loop for the given map from application.
-//        for (GameMap map: maps.keySet()){
-//            // if current map isn't the same as map
-//            if (map != location.map()){
-//                // get the TeleportLocation object.
-//                TeleportLocation internLocation = maps.get(map);
-//                // obtain the map's name and appropriate x and y coordinate for intern to teleport to.
-//                String mapName = internLocation.getMoonName();
-//                int x = internLocation.getXCoordinate();
-//                int y = internLocation.getYCoordinate();
-//                // generate TravelAction with the obtained x, y, and map's name.
-//                actions.add(new TravelAction(map.at(x, y), mapName));
-//            }
-//        }
 
         return actions;
     }
