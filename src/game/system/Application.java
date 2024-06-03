@@ -6,8 +6,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.InternTeleportLocation;
-import game.TeleportLocation;
+import game.system.teleportLocation.InternTeleportLocation;
+import game.system.teleportLocation.TeleportLocation;
 import game.actors.enemies.SuspiciousAstronaut;
 import game.actors.traders.HumanoidFigure;
 import game.actors.Player;
@@ -161,8 +161,10 @@ public class Application {
         maps.put(parkingLotMap, new InternTeleportLocation("Parking Lot", 3, 3));
 
         ComputerTerminal terminal = new ComputerTerminal(itemPrinters, maps);
-        gameMap.at(14, 9).setGround(terminal);
+        gameMap.at(16, 6).setGround(terminal);
+        moonMap.at(16, 6).setGround(terminal);
         parkingLotMap.at(4, 3).setGround(terminal);
+
         parkingLotMap.at(3, 8).addActor(new HumanoidFigure());
         
         // Run the game

@@ -1,4 +1,4 @@
-package game;
+package game.system.teleportLocation;
 
 public interface TeleportLocation {
     public int getXCoordinate();
