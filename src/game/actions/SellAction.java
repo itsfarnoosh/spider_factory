@@ -7,7 +7,7 @@ import game.items.sellables.SellableItem;
 
 import static edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes.HEALTH;
 
-public class SellingAction extends Action {
+public class SellAction extends Action {
     private Actor buyer;
     private SellableItem item;
     private int cost;
@@ -18,7 +18,7 @@ public class SellingAction extends Action {
      * @param buyer the actor who is buying the item/triggers the SellAction.
      * @param item  the sellable item.
      */
-    public SellingAction(Actor buyer, SellableItem item){
+    public SellAction(Actor buyer, SellableItem item){
         this.buyer = buyer;
         this.item = item;
         // change from getPrice()
@@ -31,7 +31,7 @@ public class SellingAction extends Action {
      *
      * @param actor the intern
      * @param map the map the intern is in.
-     * @return String that shows the result of SellingAction
+     * @return String that shows the result of SellAction
      */
     public String execute(Actor actor, GameMap map){
         String result = actor + " sold the " + this.item + " for $" + this.cost + ".";
@@ -47,7 +47,7 @@ public class SellingAction extends Action {
     }
 
     /**
-     * Description of the SellingAction.
+     * Description of the SellAction.
      * Changes depending on what is sellable.
      *
      * @param actor the intern
@@ -55,6 +55,6 @@ public class SellingAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return "Sell " + this.item + ".";
+        return "Sell " + this.item;
     }
 }
