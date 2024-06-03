@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.InternTeleportLocation;
+import game.TeleportLocation;
 import game.actors.enemies.SuspiciousAstronaut;
 import game.actors.traders.HumanoidFigure;
 import game.actors.Player;
@@ -105,20 +107,9 @@ public class Application {
         gameMap.at(7, 9).addActor(new HuntsmanSpider());
         Player player = new Player("Intern", '@', 4);
         player.addBalance(10000);
-        // test selling items.
-//        player.addItemToInventory(new DragonSlayer()); // checked
-//        player.addItemToInventory(new LargeBolt()); // checked
-//        player.addItemToInventory(new MetalSheet()); // checked
-//        player.addItemToInventory(new LargeFruit()); // checked
-//        player.addItemToInventory(new PickleJar()); // checked
-//        player.addItemToInventory(new MetalPipe()); // checked
-//        player.addItemToInventory(new GoldPot()); // checked
-//        player.addItemToInventory(new ToiletPaper()); // checked
 
 
         world.addPlayer(player, gameMap.at(15, 6));
-
-        player.addBalance(1000);
         player.modifyAttribute(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE, 1000);
 
         AlienBug alienBug = new AlienBug();
@@ -163,32 +154,17 @@ public class Application {
         itemPrinters.add(new AstleyPrinter());
         itemPrinters.add(new TheseusPrinter()); // Add TheseusPrinter to the list
 
-        // *Tedd's version*
-//        Map<GameMap, TeleportLocation> mapss = new HashMap<GameMap, TeleportLocation>();
-//        mapss.put(gameMap, new InternTeleportLocation("Factory", 15, 6));
-//        mapss.put(moonMap, new InternTeleportLocation("New Moon", 15, 6));
-//        mapss.put(parkingLotMap, new InternTeleportLocation("Parking Lot", 3, 3));
-//
-//        ComputerTerminal terminal = new ComputerTerminal(itemPrinters, mapss);
-//        gameMap.at(16, 6).setGround(terminal);
-//        moonMap.at(16, 6).setGround(terminal);
-//        parkingLotMap.at(4, 3).setGround(terminal);
+      
+        Map<GameMap, TeleportLocation> maps = new HashMap<GameMap, TeleportLocation>();
+        maps.put(gameMap, new InternTeleportLocation("Polymorphia", 15, 6));
+        maps.put(moonMap, new InternTeleportLocation("Refactario", 15, 6));
+        maps.put(parkingLotMap, new InternTeleportLocation("Parking Lot", 3, 3));
 
+        ComputerTerminal terminal = new ComputerTerminal(itemPrinters, maps);
+        gameMap.at(16, 6).setGround(terminal);
+        parkingLotMap.at(4, 3).setGround(terminal);
 
-        // Add computer terminal with travel actions to the main game map
-        ComputerTerminal computerTerminalMainMap = new ComputerTerminal(itemPrinters, gameMap, moonMap, parkingLotMap);
-        gameMap.at(14, 9).setGround(computerTerminalMainMap);
-
-        // Add computer terminal with travel actions to the moon map
-        ComputerTerminal computerTerminalMoonMap = new ComputerTerminal(itemPrinters, gameMap, moonMap, parkingLotMap);
-        moonMap.at(5, 5).setGround(computerTerminalMoonMap); // Placing the terminal at (5, 5) on the moon map
-
-
-        parkingLotMap.at(3, 8).addActor(new HumanoidFigure());
-        // for testing
-//        gameMap.at(15, 8).addActor(new HumanoidFigure()); // checked
-
-
+        
         // Run the game
         world.run();
 
