@@ -19,19 +19,20 @@ public class Theseus extends Item {
         super("Theseus", '^', true);
     }
 
-    /**
-     * Returns a list of allowable actions for this item.
-     * In this case, it provides a DropAction to the actor who owns it.
-     *
-     * @param owner The actor who owns this item.
-     * @return A list of actions that can be performed with this item.
-     */
-    @Override
-    public ActionList allowableActions(Actor owner) {
-        ActionList actions = new ActionList();
-        actions.add(new DropAction(this));
-        return actions;
-    }
+//    /**
+//     * Returns a list of allowable actions for this item.
+//     * In this case, it provides a DropAction to the actor who owns it.
+//     *
+//     * @param owner The actor who owns this item.
+//     * @return A list of actions that can be performed with this item.
+//     */
+//    @Override
+//    public ActionList allowableActions(Actor owner) {
+//        ActionList actions = new ActionList();
+//        actions.add(new DropAction(this));
+//        return actions;
+//    }
+
     /**
      * Returns a list of allowable actions for this item.
      * In this case, it provides a TeleportAction to the actor who is standing on it/at the same location.
