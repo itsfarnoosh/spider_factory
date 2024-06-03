@@ -7,12 +7,12 @@ import game.items.Astley;
  * A Printer for creating Astley items.
  */
 public class AstleyPrinter implements Printer {
-    private final int price;
+    private final int PRICE;
     /**
      * Constructor for the AstleyPrinter.
      */
     public AstleyPrinter() {
-        this.price = 50;
+        this.PRICE = 50;
     }
     /**
      * Indicates whether this printer prints items.
@@ -33,13 +33,13 @@ public class AstleyPrinter implements Printer {
         return new Astley();
     }
     /**
-     * Returns the price of the item printed by this printer.
+     * Returns the PRICE of the item printed by this printer.
      *
-     * @return The price of the Astley item.
+     * @return The PRICE of the Astley item.
      */
     @Override
     public int creditPayable() {
-        return price;
+        return PRICE;
     }
     /**
      * Returns a string representation of the printer.

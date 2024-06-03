@@ -12,13 +12,4 @@ public class LargeBolt extends SellableScrap {
         super("Large Bolt", '+', true, 25);
 
     }
-
-    /***
-     * Non-default Constructor.
-     *
-     * @param price of the item
-     */
-    public LargeBolt(int price) {
-        super("Large Bolt", '+', true, price);
-    }
 }

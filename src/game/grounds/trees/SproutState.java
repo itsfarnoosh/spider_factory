@@ -1,9 +1,6 @@
 package game.grounds.trees;
 
-
 import edu.monash.fit2099.engine.positions.Location;
-
-
 
 public class SproutState implements TreeState {
     private static final int GROWTH_PERIOD = 3;

@@ -8,10 +8,9 @@ import java.util.Random;
 public class EnergyDrinkPrinter implements Printer {
 
     private final int healingPoints = 1;
-    private final EnergyDrink item = new EnergyDrink(healingPoints);
     private int credit;
 
-    private final int successChance; // chance of intern paying double
+    private final int SUCCESS_CHANCE; // chance of intern paying double
 
     /**
      * Constructor
@@ -20,7 +19,7 @@ public class EnergyDrinkPrinter implements Printer {
      */
     public EnergyDrinkPrinter(){
         this.credit = 10;
-        this.successChance = 20;
+        this.SUCCESS_CHANCE = 20;
     }
 
     /**
@@ -41,7 +40,7 @@ public class EnergyDrinkPrinter implements Printer {
     public int creditPayable() {
         int percentage = new Random().nextInt(100);
 
-        if (percentage < this.successChance){
+        if (percentage < this.SUCCESS_CHANCE){
             credit = credit * 2;
         }
         return credit;

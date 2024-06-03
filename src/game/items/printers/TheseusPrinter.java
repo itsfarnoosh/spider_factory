@@ -3,16 +3,14 @@ package game.items.printers;
 import edu.monash.fit2099.engine.items.Item;
 import game.items.Theseus;
 
-
 public class TheseusPrinter implements Printer {
-    private final Theseus item = new Theseus();
-    private int credit;
+    private final int PRICE;
 
     /**
      * Constructor
      */
     public TheseusPrinter() {
-        this.credit = 100;
+        this.PRICE = 100;
 
     }
 
@@ -32,8 +30,7 @@ public class TheseusPrinter implements Printer {
      * @return the price in integer for THESEUS
      */
     public int creditPayable() {
-
-        return credit;
+        return PRICE;
     }
 
     /**

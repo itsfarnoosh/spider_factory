@@ -1,5 +1,3 @@
-// File path: game/actions/TeleportAction.java
-
 package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;

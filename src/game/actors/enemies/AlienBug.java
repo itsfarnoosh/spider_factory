@@ -20,13 +20,6 @@ import game.enums.Status;
 
 import java.util.*;
 
-//Intern can attack AlienBug
-//AlienBug wander around
-//AlienBug Follow the intern
-//AlienBug has 2 hit points
-//alien bug  picks up scraps
-//alien bug doesn't drop anything after death***
-
 /**
  * AlienBug class that extends Enemy and includes behaviors for following and collecting scraps.
  */

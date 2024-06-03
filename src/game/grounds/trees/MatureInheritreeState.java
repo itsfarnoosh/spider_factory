@@ -3,7 +3,6 @@ package game.grounds.trees;
 import edu.monash.fit2099.engine.positions.Location;
 import game.items.consumables.LargeFruit;
 
-
 import java.util.Random;
 
 public class MatureInheritreeState implements TreeState {

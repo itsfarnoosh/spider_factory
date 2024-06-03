@@ -6,17 +6,16 @@ import game.items.sellables.ToiletPaper;
 import java.util.Random;
 
 public class ToiletPaperPrinter implements Printer {
-    private final ToiletPaper item = new ToiletPaper();
-    private int credit;
-    private int successChance; // chance of intern paying 1 credit
+    private int PRICE;
+    private final int SUCCESS_CHANCE; // chance of intern paying 1 PRICE
 
     /**
      * Constructor
      *
      */
     public ToiletPaperPrinter(){
-        this.credit = 5;
-        this.successChance = 75;
+        this.PRICE = 5;
+        this.SUCCESS_CHANCE = 75;
     }
 
     /**
@@ -37,10 +36,10 @@ public class ToiletPaperPrinter implements Printer {
     public int creditPayable() {
         int percentage = new Random().nextInt(100);
 
-        if (percentage < this.successChance){
-            this.credit = 1;
+        if (percentage < this.SUCCESS_CHANCE){
+            this.PRICE = 1;
         }
-        return credit;
+        return PRICE;
     }
 
     /**

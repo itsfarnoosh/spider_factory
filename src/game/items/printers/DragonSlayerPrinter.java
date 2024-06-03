@@ -6,20 +6,17 @@ import game.items.DragonSlayer;
 import java.util.Random;
 
 public class DragonSlayerPrinter implements Printer {
-
     // I would love to call this class Godot. RIP.
-
-    private final DragonSlayer item = new DragonSlayer();
-    private final int credit;
-    private final int successChance; // chance of DragonSlayer printing.
+    private final int PRICE;
+    private final int SUCCESS_CHANCE; // chance of DragonSlayer printing.
 
     /**
      * Constructor
      *
      */
     public DragonSlayerPrinter(){
-        this.credit = 50;
-        this.successChance = 50;
+        this.PRICE = 50;
+        this.SUCCESS_CHANCE = 50;
     }
 
     /**
@@ -37,7 +34,7 @@ public class DragonSlayerPrinter implements Printer {
      * @return the price of the Dragon-Slayer
      */
     public int creditPayable() {
-        return credit;
+        return PRICE;
     }
 
     /**
@@ -48,7 +45,7 @@ public class DragonSlayerPrinter implements Printer {
     public boolean printsItem(){
         int percentage = new Random().nextInt(100);
 
-        if (percentage < this.successChance){
+        if (percentage < this.SUCCESS_CHANCE){
             return false;
         }
         return true;

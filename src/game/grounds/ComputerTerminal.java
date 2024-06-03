@@ -1,5 +1,3 @@
-// File path: game/grounds/ComputerTerminal.java
-
 package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;

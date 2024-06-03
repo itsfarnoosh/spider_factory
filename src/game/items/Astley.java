@@ -19,13 +19,14 @@ public class Astley extends Item {
     private static final int SUBSCRIPTION_FEE_TICK = 5;
     private int tickCounter = 0;
     private boolean hasSubscription = true;
+
     /**
      * Constructor for the Astley item.
      */
-
     public Astley() {
         super("Astley", 'z', true);
     }
+
     /**
      * Updates the state of the Astley item every tick.
      * Deducts a subscription fee from the actor every 5 ticks.
@@ -49,6 +50,7 @@ public class Astley extends Item {
             }
         }
     }
+
     /**
      * Returns a list of allowable actions for this item.
      * Provides a ListenAction if the subscription is active.
@@ -64,6 +66,7 @@ public class Astley extends Item {
         }
         return actions;
     }
+
     /**
      * Provides a random monologue based on the actor's state.
      *

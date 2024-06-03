@@ -9,10 +9,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.enums.Monster;
 
-
-//Suspicious Astronaut kills the intern
-//Suspicious Astronaut wander around
-//Suspicious Astronaut cannot enter the Intern’s spaceship ***
 public class SuspiciousAstronaut extends Enemy {
     /**
      * SpawnFactory constructor to create an SuspiciousAstronaut instance.

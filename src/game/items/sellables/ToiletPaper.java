@@ -1,7 +1,6 @@
 package game.items.sellables;
 
 import edu.monash.fit2099.engine.actors.Actor;
-import game.items.sellables.SellableScrap;
 
 import java.util.Random;
 
