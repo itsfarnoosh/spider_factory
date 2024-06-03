@@ -1,6 +1,7 @@
 package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.items.consumables.LargeFruit;
 import game.items.consumables.SmallFruit;
 
 import java.util.Random;
@@ -26,13 +27,10 @@ public class SaplingState implements TreeState {
     @Override
     public void tick(Inheritree context, Location location) {
         tickCount++;
-        if (tickCount >= GROWTH_PERIOD) {
-            context.setState(new YoungInheritreeState());
-        } else {
-            if (Math.random() <= PLANT_CHANCE) {
-                dropFruit(location, new SmallFruit());
-            }
+        if (context.isGrowing(tickCount,GROWTH_PERIOD, new YoungInheritreeState())) {
+            context.dropFruit(location, new SmallFruit(), PLANT_CHANCE);
         }
+
     }
 
     /**
@@ -45,15 +43,4 @@ public class SaplingState implements TreeState {
         return 't';
     }
 
-    /**
-     * Drops a small fruit in a random adjacent location.
-     *
-     * @param location the current location of the Inheritree.
-     * @param fruit the small fruit to be dropped.
-     */
-    private void dropFruit(Location location, SmallFruit fruit) {
-        Random rand = new Random();
-        Location destination = location.getExits().get(rand.nextInt(location.getExits().size())).getDestination();
-        destination.addItem(fruit);
-    }
 }

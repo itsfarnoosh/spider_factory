@@ -21,9 +21,8 @@ public class MatureInheritreeState implements TreeState {
      */
     @Override
     public void tick(Inheritree context, Location location) {
-        if (Math.random() <= PLANT_CHANCE) {
-            dropFruit(location, new LargeFruit());
-        }
+        context.dropFruit(location, new LargeFruit(), PLANT_CHANCE);
+
     }
 
     /**
@@ -36,15 +35,4 @@ public class MatureInheritreeState implements TreeState {
         return 'T';
     }
 
-    /**
-     * Drops a large fruit in a random adjacent location.
-     *
-     * @param location the current location of the Inheritree.
-     * @param fruit the large fruit to be dropped.
-     */
-    private void dropFruit(Location location, LargeFruit fruit) {
-        Random rand = new Random();
-        Location destination = location.getExits().get(rand.nextInt(location.getExits().size())).getDestination();
-        destination.addItem(fruit);
-    }
 }

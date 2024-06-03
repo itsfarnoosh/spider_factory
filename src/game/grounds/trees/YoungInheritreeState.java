@@ -20,9 +20,7 @@ public class YoungInheritreeState implements TreeState {
     @Override
     public void tick(Inheritree context, Location location) {
         tickCount++;
-        if (tickCount >= GROWTH_PERIOD) {
-            context.setState(new MatureInheritreeState());
-        }
+        context.isGrowing(tickCount,GROWTH_PERIOD,new MatureInheritreeState());
     }
 
     /**

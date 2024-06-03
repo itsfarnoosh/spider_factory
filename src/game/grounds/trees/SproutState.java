@@ -1,5 +1,6 @@
 package game.grounds.trees;
 
+import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 
 /**
@@ -20,9 +21,8 @@ public class SproutState implements TreeState {
     @Override
     public void tick(Inheritree context, Location location) {
         tickCount++;
-        if (tickCount >= GROWTH_PERIOD) {
-            context.setState(new SaplingState());
-        }
+        context.isGrowing(tickCount, GROWTH_PERIOD, new SaplingState());
+
     }
 
     /**
