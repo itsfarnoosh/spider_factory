@@ -161,9 +161,9 @@ public class Application {
         maps.put(parkingLotMap, new InternTeleportLocation("Parking Lot", 3, 3));
 
         ComputerTerminal terminal = new ComputerTerminal(itemPrinters, maps);
-        gameMap.at(16, 6).setGround(terminal);
+        gameMap.at(14, 9).setGround(terminal);
         parkingLotMap.at(4, 3).setGround(terminal);
-
+        parkingLotMap.at(3, 8).addActor(new HumanoidFigure());
         
         // Run the game
         world.run();
