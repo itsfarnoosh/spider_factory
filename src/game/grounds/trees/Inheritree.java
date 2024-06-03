@@ -53,7 +53,7 @@ public class Inheritree extends Ground {
     /**
      * Checks if the Inheritree is growing in the same state.
      *
-     * @param tickCount the current tick count of the Inheritree.
+     * @param tickCount the current tick count of the Inheritree in the current state.
      * @param nextState the next state of the Inheritree.
      * @param period the amount of ticks required to grow into the next state
      *
