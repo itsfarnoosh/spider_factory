@@ -7,7 +7,7 @@ These following classes were created to assist and developed previous code to ma
 
   SellableItem interface:
   All the items that are sellable must implement the SellableItem interface. This class has important methods such as
-  getPrice(), getSellingPrice() and sellItem(Actor actor) which would allow any items to perform essential processes
+  getPrice(), getSellingPrice() and sellItem(Actor actor, Gamemap) which would allow any items to perform essential processes
   but also reduce redundant due to interface's re-usability as certain item may have varied percentage and effects when
   being purchase by the humanoid figure. Each sellable item's getPrice() will simply provide the price of the item. If
   the item doesn't have attribute chance, getSellingItem() will also work the same as getPrice(). If the item has chance
@@ -59,7 +59,7 @@ These following classes were created to assist and developed previous code to ma
   Technically this would also be action of down-casting as Item isn't directly implementing SellableItem interface
   (as we are unable to modify class from engine) but the sub-class of the Item class does. Down-casting is require in
   this case as it will allow the sellable item that was initially declared as Item to utilise essential methods such as
-  getPrice(), getSellingPrice(), and sellItem(Actor actor). By doing this, the item will be compatible with
+  getPrice(), getSellingPrice(), and sellItem(Actor actor, GameMap map). By doing this, the item will be compatible with
   SellingAction class as they're able to use their SellableItem methods. Afterwards, the newly changed SellableItem
   object will get pass into SellingAction's constructor parameter which is created everytime a sellable item is found
   in intern's inventory.
@@ -73,7 +73,7 @@ These following classes were created to assist and developed previous code to ma
 
   SellingAction:
   In SellingAction, sellableItem, the buyer, and the intern (the seller) will be taken as the class attributes. In
-  execute method, the sellable item's sellItem(Actor actor) methods will get called with intern as the method's
+  execute method, the sellable item's sellItem(Actor actor, GameMap) methods will get called with intern as the method's
   parameter. If the selling process is successful, the text "The intern sold the (the item) for $(the price)." will show
   up whilst If the selling wasn't successful (where the process will check if the seller's health attribute have reached
   0), the text "(the seller) is instantly killed by (the buyer)" will show, then the "YOU ARE FIRED" will show up as the
@@ -83,11 +83,7 @@ These following classes were created to assist and developed previous code to ma
 
   Toilet paper punish: For toilet paper, if the provided chance is met, the player will be killed instantly by the
   humanoid figure. In terms of implementation idea, I assign dealing damage within toilet paper class (as it is its
-  passive affects) whilst checking for player's health and provide text "The intern is instantly killed by the humanoid
-  figure." in SellingAction (for re-usability). By not associating humanoid figure directly into this process, the code
-  will become more versatile as any future actor that will have the ability to buy intern's item will be able to re-use
-  code instead of making killing action specifically for themselves which would result in repeating for every actor that
-  can buy intern's item.
+  passive affects). By not associating humanoid figure directly into this process, the code will become more versatile.
 
 Principles:
 
@@ -105,12 +101,13 @@ DRY:
 SRP:
 - each newly created class mainly has single own responsibility:
   e.g. - Humanoid figure: triggers selling actions for sellable item
-       - SellableItem interface: provide getPrice(), getSellingPrice(), and sellItem(Actor actor) methods for sellable
-         items to be able to provide appropriate price and sell for a particular item for buyer (Humanoid figure).
+       - SellableItem interface: provide getPrice(), getSellingPrice(), and sellItem(Actor actor, GameMap map) methods
+         for sellable items to be able to provide appropriate price and sell for a particular item for buyer
+         (Humanoid figure).
        - TRADER enum: allow the actor to be recognise as trader.
        - TraderActor: Allow its object/actor to not be attack by any actor and recognised as trader.
-       - SellingAction: Provoke selling process by activating SellableScrap/SellableItem object's sellItem(Actor actor)
-         method. if not success (intern died), terminate the game by removing the actor from the map.
+       - SellingAction: Provoke selling process by activating SellableScrap/SellableItem object's sellItem(Actor actor,
+         GameMap map) method. if not success (intern died), terminate the game by removing the actor from the map.
 
 OCP:
 - In order the implement current code, the original sellable items needs to change their extends from Item to
@@ -131,8 +128,8 @@ LSP:
 
 ISP:
 - All the newly created class is fully utilising and isn't being force to rely on interface class.
-- e.g. all the sellable item are require to utilising both getPrice(), getSellingPrice() and sellItem(Actor actor) from
-       SellingItem interface.
+- e.g. all the sellable item are require to utilising both getPrice(), getSellingPrice() and sellItem(Actor actor,
+       GameMap map) from SellingItem interface.
 
 DIP:
 - High-level class isn't directly relying on low-level clas but through interface.
@@ -153,9 +150,10 @@ Connascence:
 - CoN: In majority of the classes in requirement 2, many class class such as SellableScraps and sellable items that
        implement interface must have their methods with exact name and parameter. Due to this, any typo or changed to
        the name of interface's methods will also result in changes in the classes that implements it.
-- CoT: Similar to the above's principle example, SellableItem's sellItem(Actor actor) method require an Actor object as
-       its parameter, this means that sellableScraps and Items that implements SellableItem' sellItem(Actor actor)
-       must accept Actor or its sub-classes and return nothing (void).
+- CoT: Similar to the above's principle example, SellableItem's sellItem(Actor actor, GameMap map) method require both
+       Actor and GameMap object as its parameter, this means that sellableScraps and Items that implements SellableItem'
+       sellItem(Actor actor, GameMap) must accept Actor and GameMap objects or its sub-classes objects and return
+       nothing (void).
 - CoM: Luckily, each classes' methods has clear responsibility and usually doesn't change.
 - CoP: Any swap of order in any classes' constructor's parameter will result in changes to other classes' constructor
        that extends them.

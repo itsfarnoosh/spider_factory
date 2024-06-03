@@ -1,6 +1,7 @@
 package game.items.sellables;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * Represents items that can be sold within the game.
@@ -26,6 +27,7 @@ public interface SellableItem {
      * Sells the item to the specified actor.
      *
      * @param actor the actor to whom the item is being sold.
+     * @param map current map.
      */
-    void sellItem(Actor actor);
+    void sellItem(Actor actor, GameMap map);
 }

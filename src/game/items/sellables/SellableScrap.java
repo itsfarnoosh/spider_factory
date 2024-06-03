@@ -3,6 +3,7 @@ package game.items.sellables;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SellAction;
 import game.enums.Status;
@@ -96,9 +97,10 @@ public class SellableScrap extends Item implements SellableItem {
      * Remove the item from their inventory
      *
      * @param actor the seller.
+     * @param map current map.
      */
     @Override
-    public void sellItem(Actor actor) {
+    public void sellItem(Actor actor, GameMap map) {
         // add item's price to actor's balance
         actor.addBalance(this.getPrice());
         // remove the sold item from actor's inventory

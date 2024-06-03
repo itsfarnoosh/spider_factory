@@ -2,6 +2,7 @@ package game.items.consumables;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SellAction;
 import game.enums.Status;
@@ -57,8 +58,9 @@ public class LargeFruit extends Fruit implements SellableItem {
      * Remove the item from their inventory
      *
      * @param actor the seller.
+     * @param map current map.
      */
-    public void sellItem(Actor actor) {
+    public void sellItem(Actor actor, GameMap map) {
         actor.addBalance(this.getPrice());
         actor.removeItemFromInventory(this);
     }
