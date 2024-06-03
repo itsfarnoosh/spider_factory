@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.grounds.trees.SaplingState;
 import game.system.teleportLocation.InternTeleportLocation;
 import game.system.teleportLocation.TeleportLocation;
 import game.actors.enemies.SuspiciousAstronaut;
@@ -123,8 +124,8 @@ public class Application {
         gameMap.at(23, 7).addItem(new MetalSheet());
         gameMap.at(14, 2).addItem(new MetalSheet());
 
-        gameMap.at(24, 1).setGround(new Inheritree(new SproutState()));
-        gameMap.at(8, 5).setGround(new Inheritree(new SproutState()));
+        gameMap.at(24, 1).setGround(new Inheritree(new SaplingState()));
+        gameMap.at(8, 5).setGround(new Inheritree(new SaplingState()));
         gameMap.at(23, 11).setGround(new Inheritree(new SproutState()));
 
         gameMap.at(21, 3).setGround(new Crater<>(AlienBug.FACTORY));
@@ -166,6 +167,9 @@ public class Application {
         parkingLotMap.at(4, 3).setGround(terminal);
 
         parkingLotMap.at(3, 8).addActor(new HumanoidFigure());
+        moonMap.at(24, 1).setGround(new Inheritree(new SproutState()));
+        moonMap.at(8, 5).setGround(new Inheritree(new SproutState()));
+        moonMap.at(23, 11).setGround(new Inheritree(new SproutState()));
         
         // Run the game
         world.run();
