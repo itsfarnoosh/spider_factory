@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.Printer;
+import game.items.printers.Printer;
 
 public class PurchaseAction extends Action {
     private Printer printer;
@@ -36,9 +36,9 @@ public class PurchaseAction extends Action {
                 actor.addItemToInventory(item);
                 result += actor + " has purchased a " + item;
             }else {
-                result += actor + "did not purchase a " + item;
+                result += "Transaction failed. " + actor + " did not purchase a " + item;
             }
-        }else {
+        } else {
             result += "Insufficient balance.";
         }
 

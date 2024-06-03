@@ -1,26 +1,22 @@
-package game.items;
+package game.items.printers;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.items.DragonSlayer;
 
 import java.util.Random;
 
 public class DragonSlayerPrinter implements Printer {
-
     // I would love to call this class Godot. RIP.
-
-    private final DragonSlayer item = new DragonSlayer();
-    private final int credit;
-    private final int successChance; // chance of DragonSlayer printing.
+    private final int PRICE;
+    private final int SUCCESS_CHANCE; // chance of DragonSlayer printing.
 
     /**
      * Constructor
      *
-     * @param credit the price of the Dragon-slayer. GRIFFITH!!!
-     * @param chance  the chance of the sword being print.
      */
-    public DragonSlayerPrinter(int credit, int chance){
-        this.credit = credit;
-        this.successChance = chance;
+    public DragonSlayerPrinter(){
+        this.PRICE = 50;
+        this.SUCCESS_CHANCE = 50;
     }
 
     /**
@@ -33,12 +29,12 @@ public class DragonSlayerPrinter implements Printer {
     }
 
     /**
-     * Porvide the price of the Dragon-Slayer
+     * Provide the price of the Dragon-Slayer
      *
      * @return the price of the Dragon-Slayer
      */
     public int creditPayable() {
-        return credit;
+        return PRICE;
     }
 
     /**
@@ -49,7 +45,7 @@ public class DragonSlayerPrinter implements Printer {
     public boolean printsItem(){
         int percentage = new Random().nextInt(100);
 
-        if (percentage < this.successChance){
+        if (percentage < this.SUCCESS_CHANCE){
             return false;
         }
         return true;

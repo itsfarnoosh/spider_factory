@@ -9,11 +9,17 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.enums.Monster;
 
-
-//Suspicious Astronaut kills the intern
-//Suspicious Astronaut wander around
-//Suspicious Astronaut cannot enter the Intern’s spaceship ***
 public class SuspiciousAstronaut extends Enemy {
+    /**
+     * SpawnFactory constructor to create an SuspiciousAstronaut instance.
+     * Returns a new SuspiciousAstronaut instance to be used in when instantiating a Crater object
+     */
+    public static SpawnFactory<SuspiciousAstronaut> FACTORY = new SpawnFactory<>() {
+        @Override
+        public SuspiciousAstronaut spawn() {
+            return new SuspiciousAstronaut();
+        }
+    };
     /**
      * Constructor.
      *
@@ -52,4 +58,7 @@ public class SuspiciousAstronaut extends Enemy {
     @Override
     public IntrinsicWeapon getIntrinsicWeapon(){
         return new IntrinsicWeapon(Integer.MAX_VALUE, "bonks", 100);
-    }}
+    }
+
+
+}

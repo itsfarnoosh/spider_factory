@@ -1,36 +1,18 @@
 package game.items.consumables;
 
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
-import game.actions.ConsumeAction;
 
-public abstract class Consumable extends Item {
-
-    /***
-     * Constructor.
-     *
-     * @param name the name of this Item
-     * @param displayChar the character to use to represent this item if it is on the ground
-     * @param portable true if and only if the Item can be picked up
-     */
-    public Consumable(String name, char displayChar, boolean portable) {
-        super(name, displayChar, portable);
-    }
-
-    public String consume(Actor actor) {
-        return null;
-    }
+/**
+ * Represents items that can be consumed by an actor within the game.
+ * Provides a method to consume the item, which affects the specified actor.
+ */
+public interface Consumable {
 
     /**
-     * Retrieves the list of allowable actions for the owner of the fruit.
+     * Consumes the item, which has an effect on the specified actor that consumes it.
      *
-     * @param owner the Actor that owns the fruit
-     * @return a list of allowable actions for the owner of the fruit
+     * @param actor the actor who consumes the item.
+     * @return a string describing the result of the consumption.
      */
-    @Override
-    public ActionList allowableActions(Actor owner) {
-        return new ActionList(new ConsumeAction(this));
-    }
-
+    String consume(Actor actor);
 }

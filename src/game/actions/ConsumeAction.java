@@ -26,7 +26,6 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        actor.removeItemFromInventory(consumable);
         return consumable.consume(actor);
     }
     /**

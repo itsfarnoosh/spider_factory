@@ -2,11 +2,15 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.DrinkAction;
+import game.actions.ConsumeAction;
+import game.items.consumables.Consumable;
 
-public class Puddle extends Ground {
+import static edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes.HEALTH;
+
+public class Puddle extends Ground implements Consumable {
 
     /**
      * Constructor.
@@ -28,8 +32,31 @@ public class Puddle extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         if (location.containsAnActor() && (location.getActor()).equals(actor)) {
-            return new ActionList(new DrinkAction());
+            return new ActionList(new ConsumeAction(this));
         }
         return new ActionList();
+    }
+
+    /**
+     * Consumes the puddle, affecting the specified actor.
+     * Increases the actor's maximum health by 1 point.
+     *
+     * @param actor the actor who consumes the puddle.
+     * @return a string describing the result of the consumption.
+     */
+    @Override
+    public String consume(Actor actor) {
+        actor.modifyAttributeMaximum(HEALTH, ActorAttributeOperations.INCREASE, 1);
+        return actor + "'s Max Health has been increased by 1 point!";
+    }
+
+    /**
+     * Provides a string representation of this object.
+     *
+     * @return a simple name of the class "Puddle"
+     */
+    @Override
+    public String toString() {
+        return "Puddle";
     }
 }

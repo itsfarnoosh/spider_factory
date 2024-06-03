@@ -14,7 +14,7 @@ import game.enums.Ability;
  * Class representing the Player.
  * Created by:
  * @author Adrian Kristanto
- * Modified by:
+ * Modified by: Maily Hoang
  *
  */
 public class Player extends Actor {
@@ -29,6 +29,7 @@ public class Player extends Actor {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.HOSTILE_TO_ENEMY);
         this.addCapability(Ability.ENTER_SPACESHIP);
+
     }
 
     @Override

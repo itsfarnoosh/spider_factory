@@ -1,23 +1,21 @@
-package game.items;
+package game.items.printers;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.items.sellables.ToiletPaper;
 
 import java.util.Random;
 
 public class ToiletPaperPrinter implements Printer {
-    private final ToiletPaper item = new ToiletPaper();
-    private int credit;
-    private final int successChance; // chance of intern paying 1 credit
+    private int PRICE;
+    private final int SUCCESS_CHANCE; // chance of intern paying 1 PRICE
 
     /**
      * Constructor
      *
-     * @param credit the original price of the drink
-     * @param chance chance of the drink to be double priced
      */
-    public ToiletPaperPrinter(int credit, int chance){
-        this.credit = credit;
-        this.successChance = chance;
+    public ToiletPaperPrinter(){
+        this.PRICE = 5;
+        this.SUCCESS_CHANCE = 75;
     }
 
     /**
@@ -38,10 +36,10 @@ public class ToiletPaperPrinter implements Printer {
     public int creditPayable() {
         int percentage = new Random().nextInt(100);
 
-        if (percentage < this.successChance){
-            this.credit = 1;
+        if (percentage < this.SUCCESS_CHANCE){
+            this.PRICE = 1;
         }
-        return credit;
+        return PRICE;
     }
 
     /**

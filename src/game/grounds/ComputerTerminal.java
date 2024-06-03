@@ -1,53 +1,77 @@
 package game.grounds;
 
-import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.items.DragonSlayerPrinter;
-import game.items.consumables.EnergyDrinkPrinter;
+import edu.monash.fit2099.engine.positions.GameMap;
+import game.system.teleportLocation.TeleportLocation;
 import game.actions.PurchaseAction;
-import game.items.ToiletPaperPrinter;
+import game.actions.TravelAction;
+import game.items.printers.Printer;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
+/**
+ * A computer terminal that allows the actor to purchase items and travel to different maps.
+ */
 public class ComputerTerminal extends Ground {
+    private final ArrayList<Printer> ITEM_PRINTERS;
+    private final Map<GameMap, TeleportLocation> MAPS;
+
 
     /**
-     * Constructor
+     * Constructor for the ComputerTerminal.
      *
+     * @param ITEM_PRINTERS A list of item printers available at this terminal.
+     * @param MAPS A HashMap of maps to teleport to
      */
-    public ComputerTerminal(){
+    public ComputerTerminal(ArrayList<Printer> ITEM_PRINTERS, Map<GameMap, TeleportLocation> MAPS) {
         super('=');
+        this.ITEM_PRINTERS = ITEM_PRINTERS;
+        this.MAPS = MAPS;
     }
-    
+
     /**
-     * Create purchase actions for each item
+     * Returns a list of allowable actions for this ground.
+     * In this case, it provides actions to purchase items and travel to different maps.
      *
-     * @param actor the Actor acting
-     * @param location the current Location
-     * @param direction the direction of the Ground from the Actor
-     * @return The purchaseAction for each item
+     * @param actor     The actor performing the actions.
+     * @param location  The current location of the ground.
+     * @param direction The direction of the ground from the actor.
+     * @return A list of actions that can be performed on this ground.
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
-        List<Action> purchaseActions = new ArrayList<>(
-                List.of(new PurchaseAction(new EnergyDrinkPrinter(10, 20)),
-                        new PurchaseAction(new DragonSlayerPrinter(100, 50)),
-                        new PurchaseAction(new ToiletPaperPrinter(5, 75))));
-
         ActionList actions = new ActionList();
-        actions.add(purchaseActions);
+
+        // Add purchase actions
+        for (Printer printer : ITEM_PRINTERS) {
+            actions.add(new PurchaseAction(printer));
+        }
+
+        // loop for the given map from application.
+        for (GameMap map: MAPS.keySet()){
+            // if current map isn't the same as map
+            if (map != location.map()){
+                // get the TeleportLocation object.
+                TeleportLocation internLocation = MAPS.get(map);
+                // obtain the map's name and appropriate x and y coordinate for intern to teleport to.
+                String mapName = internLocation.getMoonName();
+                int x = internLocation.getXCoordinate();
+                int y = internLocation.getYCoordinate();
+                // generate TravelAction with the obtained x, y, and map's name.
+                actions.add(new TravelAction(map.at(x, y), mapName));
+            }
+        }
+
         return actions;
     }
-
-
     /**
-     * provide the ability for the thrown object to be blockable by the terminal.
+     * Determines if the ground blocks thrown objects.
      *
-     * @return Blockable from thrown object
+     * @return true, indicating that this ground blocks thrown objects.
      */
     @Override
     public boolean blocksThrownObjects() {

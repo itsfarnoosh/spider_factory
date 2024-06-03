@@ -20,13 +20,6 @@ import game.enums.Status;
 
 import java.util.*;
 
-//Intern can attack AlienBug
-//AlienBug wander around
-//AlienBug Follow the intern
-//AlienBug has 2 hit points
-//alien bug  picks up scraps
-//alien bug doesn't drop anything after death***
-
 /**
  * AlienBug class that extends Enemy and includes behaviors for following and collecting scraps.
  */
@@ -36,6 +29,17 @@ public class AlienBug extends Enemy {
      */
     private Map<Integer, Behaviour> behaviours = new TreeMap<>();
     private static final Random random = new Random();
+
+    /**
+     * SpawnFactory constructor to create an AlienBug instance.
+     * Returns a new AlienBug instance to be used in when instantiating a Crater object
+     */
+    public static SpawnFactory<AlienBug> FACTORY = new SpawnFactory<>() {
+        @Override
+        public AlienBug spawn() {
+            return new AlienBug();
+        }
+    };
 
     /**
      * Constructor.
@@ -49,6 +53,7 @@ public class AlienBug extends Enemy {
         this.spawnChance = 0.1;
 
     }
+
 
     /**
      * Generates a unique name for each Alien Bug instance.

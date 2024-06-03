@@ -8,7 +8,7 @@ import game.enums.Ability;
  * A class that represents the floor inside a building.
  * Created by:
  * @author Riordan D. Alfredo
- * Modified by:
+ * Modified by: Maily Hoang
  *
  */
 public class Floor extends Ground {

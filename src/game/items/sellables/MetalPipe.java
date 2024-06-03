@@ -1,24 +1,34 @@
-package game.items;
+package game.items.sellables;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.SellAction;
 import game.enums.Status;
 import game.actions.AttackAction;
+
 
 /**
  * Class representing the Metal Pipe Scrap Item, which can be used as a Weapon.
  */
-public class MetalPipe extends Item implements Weapon {
+public class MetalPipe extends SellableScrap implements Weapon {
 
     /**
      * Constructor for the Metal Pipe.
      */
     public MetalPipe() {
-        super("Metal Pipe", '!', true);
+        super("Metal Pipe", '!', true, 35);
+    }
+
+    /***
+     * Non-default Constructor.
+     *
+     * @param price of the item
+     */
+    public MetalPipe(int price) {
+        super("Metal Pipe", '!', true, price);
     }
 
     /**
@@ -55,6 +65,10 @@ public class MetalPipe extends Item implements Weapon {
                 break;
             }
         }
+
+        if (otherActor.hasCapability(Status.TRADER))
+            actionList.add(new SellAction(otherActor, this));
+
         return actionList;
     }
 
