@@ -13,15 +13,18 @@ import java.util.Random;
  * An Action to teleport an Actor to a random location within the same map.
  */
 public class TeleportAction extends Action {
-    private Item teleporter;
+    private Item teleport;
+    private Location teleportLocation;
     /**
      * Constructor for the TeleportAction.
      *
-     * @param teleporter The item that allows the Actor to teleport.
+     * @param teleport The item that allows the Actor to teleport.
      */
-    public TeleportAction(Item teleporter) {
-        this.teleporter = teleporter;
+    public TeleportAction(Item teleport, Location teleportLocation) {
+        this.teleport = teleport;
+        this.teleportLocation = teleportLocation;
     }
+
     /**
      * Executes the teleport action, moving the Actor to a random location within the same map.
      *
@@ -43,7 +46,7 @@ public class TeleportAction extends Action {
         } while (!newLocation.canActorEnter(actor));
 
         map.moveActor(actor, newLocation);
-        return actor + " uses " + teleporter + " to teleport to (" + x + ", " + y + ").";
+        return actor + " uses " + teleport + " to teleport to (" + x + ", " + y + ").";
     }
     /**
      * Returns a description of the action suitable for displaying in the menu.

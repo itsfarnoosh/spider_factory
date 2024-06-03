@@ -2,7 +2,9 @@ package game.items;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.TeleportAction;
 /**
  * A special item called THESEUS that allows an Actor to teleport within the same map.
@@ -24,7 +26,14 @@ public class Theseus extends Item {
     @Override
     public ActionList allowableActions(Actor owner) {
         ActionList actions = new ActionList();
-        actions.add(new TeleportAction(this));
+        actions.add(new DropAction(this));
+        return actions;
+    }
+
+    @Override
+    public ActionList allowableActions(Location location) {
+        ActionList actions = new ActionList();
+        actions.add(new TeleportAction(this, location));
         return actions;
     }
 }
