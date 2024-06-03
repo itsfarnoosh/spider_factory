@@ -3,7 +3,7 @@ package game.items.consumables;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.SellingAction;
+import game.actions.SellAction;
 import game.enums.Status;
 import game.items.sellables.SellableItem;
 
@@ -11,7 +11,7 @@ import game.items.sellables.SellableItem;
 /**
  * A class representing a Large Fruit item in the game.
  */
-public class LargeFruit extends Fruit implements SellableItem{
+public class LargeFruit extends Fruit implements SellableItem {
 
     private int price;
 
@@ -76,7 +76,7 @@ public class LargeFruit extends Fruit implements SellableItem{
     public ActionList allowableActions(Actor otherActor, Location location) {
         ActionList actions = super.allowableActions(location);
         if (otherActor.hasCapability(Status.TRADER))
-            actions.add(new SellingAction(otherActor, this));
+            actions.add(new SellAction(otherActor, this));
         return actions;
     }
 }
