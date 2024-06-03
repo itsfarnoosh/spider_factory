@@ -17,20 +17,20 @@ import java.util.Map;
  * A computer terminal that allows the actor to purchase items and travel to different maps.
  */
 public class ComputerTerminal extends Ground {
-    private ArrayList<Printer> itemPrinters;
-    private Map<GameMap, TeleportLocation> maps;
+    private final ArrayList<Printer> ITEM_PRINTERS;
+    private final Map<GameMap, TeleportLocation> MAPS;
+
+
     /**
      * Constructor for the ComputerTerminal.
      *
-     * @param itemPrinters A list of item printers available at this terminal.
-     * @param maps A HashMap of maps to teleport to
+     * @param ITEM_PRINTERS A list of item printers available at this terminal.
+     * @param MAPS A HashMap of maps to teleport to
      */
-
-
-    public ComputerTerminal(ArrayList<Printer> itemPrinters, Map<GameMap, TeleportLocation> maps) {
+    public ComputerTerminal(ArrayList<Printer> ITEM_PRINTERS, Map<GameMap, TeleportLocation> MAPS) {
         super('=');
-        this.itemPrinters = itemPrinters;
-        this.maps = maps;
+        this.ITEM_PRINTERS = ITEM_PRINTERS;
+        this.MAPS = MAPS;
     }
 
     /**
@@ -47,16 +47,16 @@ public class ComputerTerminal extends Ground {
         ActionList actions = new ActionList();
 
         // Add purchase actions
-        for (Printer printer : itemPrinters) {
+        for (Printer printer : ITEM_PRINTERS) {
             actions.add(new PurchaseAction(printer));
         }
 
         // loop for the given map from application.
-        for (GameMap map: maps.keySet()){
+        for (GameMap map: MAPS.keySet()){
             // if current map isn't the same as map
             if (map != location.map()){
                 // get the TeleportLocation object.
-                TeleportLocation internLocation = maps.get(map);
+                TeleportLocation internLocation = MAPS.get(map);
                 // obtain the map's name and appropriate x and y coordinate for intern to teleport to.
                 String mapName = internLocation.getMoonName();
                 int x = internLocation.getXCoordinate();
