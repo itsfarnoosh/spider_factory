@@ -114,7 +114,7 @@ SRP:
 
 OCP:
 - In order the implement current code, the original sellable items needs to change their extends from Item to
-  SellableScrap despi
+  SellableScrap.
 - the newly created class should be extendable without needing to change its previous code.
 - e.g. - Other than Humanoid figure, any future coming actor that will have the ability to trigger sellingAction and not
          be attack by other actors will simply need to extends the TraderActor class and add their own function that
@@ -123,7 +123,7 @@ OCP:
        - This would also apply to SellableItem where you could add a new function to the interface or if there is a new
          sellable item, they will simply need to extends the sellableScrap.
 
-LIP:
+LSP:
 - Superclass will still be replaceable by newly created class.
 - e.g. - Humanoid figure can replace Actor or TraderActor.
        - All the sellable item such as metal sheet and so on... can replace item, SellableScrap, or SellableItem.
