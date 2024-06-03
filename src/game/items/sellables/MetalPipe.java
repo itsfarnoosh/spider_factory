@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
-import game.actions.SellingAction;
+import game.actions.SellAction;
 import game.enums.Status;
 import game.actions.AttackAction;
 
@@ -67,7 +67,7 @@ public class MetalPipe extends SellableScrap implements Weapon {
         }
 
         if (otherActor.hasCapability(Status.TRADER))
-            actionList.add(new SellingAction(otherActor, this));
+            actionList.add(new SellAction(otherActor, this));
 
         return actionList;
     }

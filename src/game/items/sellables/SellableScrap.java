@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.SellingAction;
+import game.actions.SellAction;
 import game.enums.Status;
 
 
@@ -121,7 +121,7 @@ public class SellableScrap extends Item implements SellableItem {
         // if the other is an object of TraderActor
         if (otherActor.hasCapability(Status.TRADER))
             // allow item to be sellable to them
-            actions.add(new SellingAction(otherActor, this));
+            actions.add(new SellAction(otherActor, this));
         // return the produced action
         return actions;
     }

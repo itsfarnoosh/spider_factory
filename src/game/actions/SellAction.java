@@ -34,7 +34,7 @@ public class SellAction extends Action {
      * @return String that shows the result of SellAction
      */
     public String execute(Actor actor, GameMap map){
-        String result = actor + " sold the " + this.item + " for $" + this.cost + ".";
+        String result = actor + " sold the " + this.item + " for " + this.cost + " credits";
         // initiate the selling process through item's sellItem action.
         item.sellItem(actor);
         // if the intern's health is 0 / dead.
